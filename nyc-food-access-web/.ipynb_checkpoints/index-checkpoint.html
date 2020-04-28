@@ -1,0 +1,95 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Re-thinking Food Access in NYC</title>
+  <meta name="Food Access in NYC" content="Map of Fresh Food Markets and
+  Walking Distance.">
+  <meta name="Kyle Slugg" content="SitePoint">
+
+  <link rel="icon" type="image/ico"
+    href="https://raw.githubusercontent.com/hannahkates/env-hazards/master/img/favicon.ico">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Cabin+Sketch" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+
+  <script src="js/config.js"></script>
+  <script src="js/scripts.js"></script>
+</head>
+
+
+<body id="body">
+  <div id="top-section" class="container-fluid">
+    <h1 id="header-main">Re-thinking Food Access in NYC <a id="github" href="" target="_blank"><img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/2000px-Octicons-mark-github.svg.png"
+          width="22px"></a></h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row no-gutter">
+      <div class="col-sm-3">
+        <div id="sidebar">
+
+          <h3 class="header-layers">About</h3>
+          <p>Conventional measures of food access, predicated on distance to
+            supermarkets, fail to capture the particularities of New York City's
+            food landscape (including small produce markets and local grocery
+            chains). Physical distance, meanwhile, is far less important that
+            walk time in determining food-buying behavior when fresh-food
+            retailers are pitted against more convenient but less nutritious
+            options from corner bodegas.</p>
+          <p>This interactive map shows both market locations (derived from
+            OpenStreetMap) and areas that lie outside 5-, 7-, and 10-minute
+            walking radii of these markets, juxtaposed against Census Tract-level
+            demographic data.</p>
+
+          <h3 class="header-layers">Data Layers <img id="loading"
+              src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Gray_circles_rotate.gif" width="30px"></h3>
+
+          <h4><b>Air Quality</b></h4>
+          <div id="air"></div>
+
+          <h4><b>Water Quality</b></h4>
+          <div id="water"></div>
+
+          <h4><b>Contaminated Sites</b></h4>
+          <div id="contaminated"></div>
+
+          <h4><b>Chemical Storage and Spills</b></h4>
+          <div id="spills"></div>
+
+          <h4><b>Solid Waste</b></h4>
+          <div id="solid"></div>
+
+          <h4><b>Floodplains</b></h4>
+          <div id="flood"></div>
+
+          <h4><b><a href="https://github.com/hannahkates/env-hazards/issues" target="_blank">What else do you want to
+                see?</a></b></h4>
+
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div id="mapContainer">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
