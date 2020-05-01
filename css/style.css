@@ -141,12 +141,13 @@ figure figcaption {
 
 #colorlib-aside #colorlib-logo {
   text-align: right;
-  font-weight: 400;
+  font-weight: 0;
+  color: #ffffff;
   font-size: 22px;
-  text-transform: uppercase;
   margin-bottom: 3em;
   display: block;
   width: 100%;
+  background-color: #ffffff;
 }
 
 @media screen and (max-width: 768px) {
