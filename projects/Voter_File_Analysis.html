@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Voter_File_Analysis</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-
-
+    <title>Voter_File_Analysis</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
-<style type="text/css">
+
+
+    <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -60,7 +60,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 
 
 
-<style type="text/css">
+    <style type="text/css">
 /*-----------------------------------------------------------------------------
 | Copyright (c) Jupyter Development Team.
 | Distributed under the terms of the Modified BSD License.
@@ -14453,7 +14453,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 }
 </style>
 
-<style type="text/css">
+    <style type="text/css">
 /* Force rendering true colors when outputing to pdf */
 * {
   -webkit-print-color-adjust: exact;
@@ -14537,7 +14537,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 }
 </style>
 
-<!-- Load mathjax -->
+    <!-- Load mathjax -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"> </script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
@@ -14574,35 +14574,37 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h1 id="Measuring-Voter-Turnout-among-NYCHA-Residents">Measuring Voter Turnout among NYCHA Residents<a class="anchor-link" href="#Measuring-Voter-Turnout-among-NYCHA-Residents">&#182;</a></h1><h4 id="Last-edited-Thursday,-October-20,-2022-by-Kyle-Slugg">Last edited Thursday, October 20, 2022 by Kyle Slugg<a class="anchor-link" href="#Last-edited-Thursday,-October-20,-2022-by-Kyle-Slugg">&#182;</a></h4>
+        </div>
+        </div>
+    </div>
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Measuring-Voter-Turnout-among-NYCHA-Residents">Measuring Voter Turnout among NYCHA Residents<a class="anchor-link" href="#Measuring-Voter-Turnout-among-NYCHA-Residents">&#182;</a></h1><h4 id="Last-edited-Thursday,-October-20,-2022-by-Kyle-Slugg">Last edited Thursday, October 20, 2022 by Kyle Slugg<a class="anchor-link" href="#Last-edited-Thursday,-October-20,-2022-by-Kyle-Slugg">&#182;</a></h4>
-</div>
-</div>
-</div>
-</div>
+<div id="Main-Body" style="width: 80%; margin-left: auto; margin-right: auto;">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Mission-and-Purpose">Mission and Purpose<a class="anchor-link" href="#Mission-and-Purpose">&#182;</a></h3><p>Following the passage and enactment on June 16, 2022 of The New York City Housing Authority (NYCHA) Public Housing Preservation Trust Act (NY State Bill A7805D/S9409A, referred to here as the "Trust Act"), NYCHA is working quickly to bring the Trust -- an entirely new legal entity -- into being. In order to ensure that current public housing residents are comfortable with the tenancy protections they will recieve after their developments of residents are transferred to the Trust (protections which are identical to those enjoyed under current NYCHA leases), residents must authorize such a transfer (or a transfer to any other program, including PACT, NYCHA's implementation of Rental Assistance Demonstration (RAD)) through a voting process.</p>
-<p>NYCHA is directed to finalize and distribute the rules by which such a vote will be held and processed within 120 days of passage. At present, the largest outstanding issue is that of representativeness: in order for a vote to be valid, how many residents at a given development must participate?</p>
-<p>Arriving at an appropriate threshold requires balancing multiple, often competing considerations. Among them:</p>
-<ul>
-<li><strong>Statistical representativeness</strong> (i.e., securing a subset of voters large enough that their preferences can be assumed to represent those of the development as a whole)</li>
-<li><strong>Apparent fairness</strong> (i.e., securing a large-enough group that most residents of a development view the vote outcome as legitimacy)</li>
-<li><strong>Achievability</strong> (i.e., ensuring that any turnout requirement can reasonably be met in the context of NYCHA developments)</li>
-</ul>
-<p>This analysis is intended to determine what thresholds conform to the third factor: based on voter turnout in other scenarios, what share of residents can we reasonably expect to participate in a vote on whether to enter the Trust?</p>
-<h3 id="Representative-Output">Representative Output<a class="anchor-link" href="#Representative-Output">&#182;</a></h3><p>The deck below represents a typical deployment of this analysis, in the context of a working group devoted to elements of the Trust voting process. Slides and content, including GIS maps of NYCHA developments, are my own.</p>
-<div id="adobe-dc-view" style="height: 360px; width: 500px; margin-left: auto; margin-right: auto;"></div>
-<script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
-<script type="text/javascript">
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div>
+            <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+                <h3 id="Mission-and-Purpose">Mission and Purpose<a class="anchor-link" href="#Mission-and-Purpose">&#182;</a></h3><p>Following the passage and enactment on June 16, 2022 of The New York City Housing Authority (NYCHA) Public Housing Preservation Trust Act (NY State Bill A7805D/S9409A, referred to here as the "Trust Act"), NYCHA is working quickly to bring the Trust -- an entirely new legal entity -- into being. In order to ensure that current public housing residents are comfortable with the tenancy protections they will recieve after their developments of residents are transferred to the Trust (protections which are identical to those enjoyed under current NYCHA leases), residents must authorize such a transfer (or a transfer to any other program, including PACT, NYCHA's implementation of Rental Assistance Demonstration (RAD)) through a voting process.</p>
+                <p>NYCHA is directed to finalize and distribute the rules by which such a vote will be held and processed within 120 days of passage. At present, the largest outstanding issue is that of representativeness: in order for a vote to be valid, how many residents at a given development must participate?</p>
+                <p>Arriving at an appropriate threshold requires balancing multiple, often competing considerations. Among them:</p>
+                <ul>
+                    <li><strong>Statistical representativeness</strong> (i.e., securing a subset of voters large enough that their preferences can be assumed to represent those of the development as a whole)</li>
+                    <li><strong>Apparent fairness</strong> (i.e., securing a large-enough group that most residents of a development view the vote outcome as legitimacy)</li>
+                    <li><strong>Achievability</strong> (i.e., ensuring that any turnout requirement can reasonably be met in the context of NYCHA developments)</li>
+                </ul>
+                <p>This analysis is intended to determine what thresholds conform to the third factor: based on voter turnout in other scenarios, what share of residents can we reasonably expect to participate in a vote on whether to enter the Trust?</p>
+                <h3 id="Representative-Output">Representative Output<a class="anchor-link" href="#Representative-Output">&#182;</a></h3><p>The deck below represents a typical deployment of this analysis, in the context of a working group devoted to elements of the Trust voting process. Slides and content, including GIS maps of NYCHA developments, are my own.</p>
+                <div id="adobe-dc-view" style="height: 540px; width: 750px; margin-left: auto; margin-right: auto;"></div>
+                <script src="https://documentservices.adobe.com/view-sdk/viewer.js"></script>
+                <script type="text/javascript">
 	document.addEventListener("adobe_dc_view_sdk.ready", function(){
 		var adobeDCView = new AdobeDC.View({clientId: "03765142c6ee4fce867e44928bcdd626", divId: "adobe-dc-view"});
 		adobeDCView.previewFile({
@@ -14612,68 +14614,69 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 	});
 </script>
 
-<h3 id="Data-Sources">Data Sources<a class="anchor-link" href="#Data-Sources">&#182;</a></h3><p>Determining voter turnout rates at NYCHA developments in particular (as opposed to city-wide) for federal, state, and New York City municipal elections requires linking several data sources, as follows:</p>
-<ul>
-<li><strong>Voter records</strong><ul>
-<li>Provided by New York State Board of Elections in August 2022 under the Freedom of Information Law</li>
-<li>Contains one line per voter record, uniquely identified by the SBOEID field, with other key fields including name and address components and a list of elections for which votes have been recorded</li>
-</ul>
-</li>
-    <p> </p>
-<li><strong>Address records</strong><ul>
-<li><em>Base dataset</em> -- a list of addresses associated with NYCHA stairhalls (i.e., residential building entrances) obtained from NYCHA's Data Warehouse. Used to produce a unique list of "BBL" values (Borough-Block-Lot, referring to NYC's system of unique parcel identifiers).</li>
-<li><em>Citywide address guide</em> -- a system of tables identifying unique street addresses, street address ranges, and alternative address identifiers associated with each BBL value citywide. Used to enrich NYCHA's standard list of residential addresses with alternative identifiers that may be present in voter records (which rely on self-reported addresses).</li>
-</ul>
-</li>
-    <p> </p>
-<li><strong>NYCHA official resident counts</strong><ul>
-<li>Official counts of authorized NYCHA residents at each development, alongside a count of authorized residents at or over 18 years of age and therefore eligible to vote. Counts current as of August 2022.</li>
-</ul>
-</li>
-</ul>
+                <h3 id="Data-Sources">Data Sources<a class="anchor-link" href="#Data-Sources">&#182;</a></h3><p>Determining voter turnout rates at NYCHA developments in particular (as opposed to city-wide) for federal, state, and New York City municipal elections requires linking several data sources, as follows:</p>
+                <ul>
+                    <li><strong>Voter records</strong><ul>
+                        <li>Provided by New York State Board of Elections in August 2022 under the Freedom of Information Law</li>
+                        <li>Contains one line per voter record, uniquely identified by the SBOEID field, with other key fields including name and address components and a list of elections for which votes have been recorded</li>
+                    </ul>
+                    </li>
+                    <p> </p>
+                    <li><strong>Address records</strong><ul>
+                        <li><em>Base dataset</em> -- a list of addresses associated with NYCHA stairhalls (i.e., residential building entrances) obtained from NYCHA's Data Warehouse. Used to produce a unique list of "BBL" values (Borough-Block-Lot, referring to NYC's system of unique parcel identifiers).</li>
+                        <li><em>Citywide address guide</em> -- a system of tables identifying unique street addresses, street address ranges, and alternative address identifiers associated with each BBL value citywide. Used to enrich NYCHA's standard list of residential addresses with alternative identifiers that may be present in voter records (which rely on self-reported addresses).</li>
+                    </ul>
+                    </li>
+                    <p> </p>
+                    <li><strong>NYCHA official resident counts</strong><ul>
+                        <li>Official counts of authorized NYCHA residents at each development, alongside a count of authorized residents at or over 18 years of age and therefore eligible to vote. Counts current as of August 2022.</li>
+                    </ul>
+                    </li>
+                </ul>
 
-<p>Several other datasources, although not strictly necessary, are also used to either accelerate or enrich analysis of these primary sources.</p>
-<ul>
-<li><strong>Geodata</strong><ul>
-<li><em>NYCHA building and development footprints</em> -- Esri ShapeFiles containing footprints of NYCHA buildings, as well as the NYCHA developments that comprise them.</li>
-<li><em>New York City electoral districts</em> -- geographic divisions containing several blocks that form the basis for all political districts (state, local, and federal) contained within New York City.</li>
-<li><em>State, Federal, and Local political districts</em> -- district boundaries associated with the New York City Council, State Assembly, and U.S. House of Representatives.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Overview-of-Methods">Overview of Methods<a class="anchor-link" href="#Overview-of-Methods">&#182;</a></h3><p>At the highest level, computing voter turnout (for any geography) follows a simple process:
-1) Working from a basic list of addresses and, optionally, geographic information, isolate addresses contained within the area of interest.
-2) Enrich the above address list with any and all alternative addresses corresponding to the same physical location, including those using alternative address numbers (when a location is represented by an address range) as well as those using alternative street identifiers.
-3) Using any scheme of choice, standardize addresses in the enriched address set and the relevant voter records to facilitate address matching.
-4) Match voter addresses to the list of enriched addresses representing the selected geographic area (in this analysis, matching on address components is used). Verify match quality as appropriate.
-5) Remove or merge duplicate voter records as appropriate
-6) Generate indicators for voters' presence or absence in each election of interest
-7) Using vote counts for each relevant election and a denominator of choice, compute turnout percentages.</p>
-<p>The following workflow implements this process for the above data sources, ultimately producing turnout as a percentage of registered voters for each election in BOE records and at each NYCHA development.</p>
+                <p>Several other datasources, although not strictly necessary, are also used to either accelerate or enrich analysis of these primary sources.</p>
+                <ul>
+                    <li><strong>Geodata</strong><ul>
+                        <li><em>NYCHA building and development footprints</em> -- Esri ShapeFiles containing footprints of NYCHA buildings, as well as the NYCHA developments that comprise them.</li>
+                        <li><em>New York City electoral districts</em> -- geographic divisions containing several blocks that form the basis for all political districts (state, local, and federal) contained within New York City.</li>
+                        <li><em>State, Federal, and Local political districts</em> -- district boundaries associated with the New York City Council, State Assembly, and U.S. House of Representatives.</li>
+                    </ul>
+                    </li>
+                </ul>
+                <h3 id="Overview-of-Methods">Overview of Methods<a class="anchor-link" href="#Overview-of-Methods">&#182;</a></h3><p>At the highest level, computing voter turnout (for any geography) follows a simple process:
+                1) Working from a basic list of addresses and, optionally, geographic information, isolate addresses contained within the area of interest.
+                2) Enrich the above address list with any and all alternative addresses corresponding to the same physical location, including those using alternative address numbers (when a location is represented by an address range) as well as those using alternative street identifiers.
+                3) Using any scheme of choice, standardize addresses in the enriched address set and the relevant voter records to facilitate address matching.
+                4) Match voter addresses to the list of enriched addresses representing the selected geographic area (in this analysis, matching on address components is used). Verify match quality as appropriate.
+                5) Remove or merge duplicate voter records as appropriate
+                6) Generate indicators for voters' presence or absence in each election of interest
+                7) Using vote counts for each relevant election and a denominator of choice, compute turnout percentages.</p>
+                <p>The following workflow implements this process for the above data sources, ultimately producing turnout as a percentage of registered voters for each election in BOE records and at each NYCHA development.</p>
 
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-</div>
+
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Annotated-Analytical-Workflow">Annotated Analytical Workflow<a class="anchor-link" href="#Annotated-Analytical-Workflow">&#182;</a></h3>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h3 id="Annotated-Analytical-Workflow">Annotated Analytical Workflow<a class="anchor-link" href="#Annotated-Analytical-Workflow">&#182;</a></h3>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">zipfile_deflate64</span> <span class="k">as</span> <span class="nn">zipfile</span>
 <span class="kn">import</span> <span class="nn">csv</span>
@@ -14693,31 +14696,31 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">tqdm</span><span class="o">.</span><span class="n">pandas</span><span class="p">()</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Load-and-process-voter-records">Load and process voter records<a class="anchor-link" href="#Load-and-process-voter-records">&#182;</a></h4>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h4 id="Load-and-process-voter-records">Load and process voter records<a class="anchor-link" href="#Load-and-process-voter-records">&#182;</a></h4>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">voters</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s1">&#39;AllNYSVoters_20220711.zip&#39;</span><span class="p">)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">voters</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s1">&#39;AllNYSVoters_20220711.zip&#39;</span><span class="p">)</span>
 <span class="n">test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">read_in_chunks</span><span class="p">(</span><span class="n">file_object</span><span class="p">,</span> <span class="n">chunk_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">):</span>
@@ -14745,31 +14748,31 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <span class="k">return</span> <span class="n">interim_df</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5 id="For-ease-of-additional-processing,-discard-all-voter-records-that-do-not-correspond-to-electoral-districts-that-contain,-in-part-or-whole,-NYCHA-developments">For ease of additional processing, discard all voter records that do not correspond to electoral districts that contain, in part or whole, NYCHA developments<a class="anchor-link" href="#For-ease-of-additional-processing,-discard-all-voter-records-that-do-not-correspond-to-electoral-districts-that-contain,-in-part-or-whole,-NYCHA-developments">&#182;</a></h5>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h5 id="For-ease-of-additional-processing,-discard-all-voter-records-that-do-not-correspond-to-electoral-districts-that-contain,-in-part-or-whole,-NYCHA-developments">For ease of additional processing, discard all voter records that do not correspond to electoral districts that contain, in part or whole, NYCHA developments<a class="anchor-link" href="#For-ease-of-additional-processing,-discard-all-voter-records-that-do-not-correspond-to-electoral-districts-that-contain,-in-part-or-whole,-NYCHA-developments">&#182;</a></h5>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Columns entered manually from data dictionary packaged with voter file</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Columns entered manually from data dictionary packaged with voter file</span>
 <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;LASTNAME&#39;</span><span class="p">,</span><span class="s1">&#39;FIRSTNAME&#39;</span><span class="p">,</span><span class="s1">&#39;MIDDLENAME&#39;</span><span class="p">,</span><span class="s1">&#39;NAMESUFFIX&#39;</span><span class="p">,</span>
         <span class="s1">&#39;RADDNUMBER&#39;</span><span class="p">,</span><span class="s1">&#39;RHALFCODE&#39;</span><span class="p">,</span><span class="s1">&#39;RPREDIRECTION&#39;</span><span class="p">,</span><span class="s1">&#39;RSTREETNAME&#39;</span><span class="p">,</span>
         <span class="s1">&#39;RPOSTDIRECTION&#39;</span><span class="p">,</span> <span class="s1">&#39;RAPARTMENTTYPE&#39;</span><span class="p">,</span> <span class="s1">&#39;RAPARTMENT&#39;</span><span class="p">,</span> <span class="s1">&#39;RADDRNONSTD&#39;</span><span class="p">,</span><span class="s1">&#39;RCITY&#39;</span><span class="p">,</span><span class="s1">&#39;RZIP5&#39;</span><span class="p">,</span><span class="s1">&#39;RZIP4&#39;</span><span class="p">,</span>
@@ -14804,20 +14807,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">nyc_counties</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;31&#39;</span><span class="p">,</span> <span class="s1">&#39;24&#39;</span><span class="p">,</span> <span class="s1">&#39;41&#39;</span><span class="p">,</span> <span class="s1">&#39;03&#39;</span><span class="p">,</span> <span class="s1">&#39;43&#39;</span><span class="p">])</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">voters</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;AllNYSVoters_20220711.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_handle</span><span class="p">:</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">voters</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;AllNYSVoters_20220711.txt&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_handle</span><span class="p">:</span>
     <span class="c1">#cols_line = file_handle.readline().decode(&#39;utf-8&#39;)</span>
     <span class="c1">#cols = [re.sub(r&#39;[\s\&#39;\&quot;]+&#39;,&#39;&#39;,col).strip() for col in cols_line.split(&#39;,&#39;)]</span>
     <span class="c1">#print(cols)</span>
@@ -14838,20 +14841,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">caches</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="s1">&#39;clean_segments/*&#39;</span><span class="p">)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">caches</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="s1">&#39;clean_segments/*&#39;</span><span class="p">)</span>
 
 <span class="n">full_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span>
 
@@ -14860,36 +14863,36 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <span class="n">full_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">full_df</span><span class="p">,</span> <span class="n">segment_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5 id="Clean-and-convert-various-fields:">Clean and convert various fields:<a class="anchor-link" href="#Clean-and-convert-various-fields:">&#182;</a></h5><ul>
-<li>BOROUGH: convert COUNTYCODE contained in voter file to NYC borough</li>
-<li>RADDNUMBER, RSTREETNAME, BOROUGH: convert to string and remove whitespace</li>
-<li>MOD_ADDRESS: combine address number, street prefixes, street names, and boroughs into a unique address identifier</li>
-</ul>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h5 id="Clean-and-convert-various-fields:">Clean and convert various fields:<a class="anchor-link" href="#Clean-and-convert-various-fields:">&#182;</a></h5><ul>
+            <li>BOROUGH: convert COUNTYCODE contained in voter file to NYC borough</li>
+            <li>RADDNUMBER, RSTREETNAME, BOROUGH: convert to string and remove whitespace</li>
+            <li>MOD_ADDRESS: combine address number, street prefixes, street names, and boroughs into a unique address identifier</li>
+        </ul>
 
-</div>
-</div>
-</div>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">county_to_borough_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">31</span><span class="p">:</span> <span class="s1">&#39;MANHATTAN&#39;</span><span class="p">,</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">county_to_borough_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">31</span><span class="p">:</span> <span class="s1">&#39;MANHATTAN&#39;</span><span class="p">,</span>
                           <span class="mi">24</span><span class="p">:</span> <span class="s1">&#39;BROOKLYN&#39;</span><span class="p">,</span>
                           <span class="mi">41</span><span class="p">:</span> <span class="s1">&#39;QUEENS&#39;</span><span class="p">,</span>
                           <span class="mi">3</span><span class="p">:</span>  <span class="s1">&#39;BRONX&#39;</span><span class="p">,</span>
@@ -14922,74 +14925,74 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">full_df</span><span class="p">[</span><span class="s1">&#39;MOD_ADDRESS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full_df</span><span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">get_mod_address_from_row</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5 id="Write-out-to-CSV-for-flexible-workflow">Write out to CSV for flexible workflow<a class="anchor-link" href="#Write-out-to-CSV-for-flexible-workflow">&#182;</a></h5>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h5 id="Write-out-to-CSV-for-flexible-workflow">Write out to CSV for flexible workflow<a class="anchor-link" href="#Write-out-to-CSV-for-flexible-workflow">&#182;</a></h5>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">full_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;NYCHA_DISTRICT_RECORDS_2022.csv&#39;</span><span class="p">)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">full_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;NYCHA_DISTRICT_RECORDS_2022.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Locate-full-NYCHA-address-range-from-BBL">Locate full NYCHA address range from BBL<a class="anchor-link" href="#Locate-full-NYCHA-address-range-from-BBL">&#182;</a></h4>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h4 id="Locate-full-NYCHA-address-range-from-BBL">Locate full NYCHA address range from BBL<a class="anchor-link" href="#Locate-full-NYCHA-address-range-from-BBL">&#182;</a></h4>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#The following files and associated documentation are found at:</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#The following files and associated documentation are found at:</span>
 <span class="c1">#https://www1.nyc.gov/site/planning/data-maps/open-data.page#pad</span>
 <span class="c1">#If direct link fails, search &quot;Property Address Directory&quot; on linked page</span>
 
@@ -14999,94 +15002,94 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">snd</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rectype&#39;</span><span class="p">,</span><span class="s1">&#39;boro&#39;</span><span class="p">,</span><span class="s1">&#39;stname&#39;</span><span class="p">,</span><span class="s1">&#39;primary_flag&#39;</span><span class="p">,</span><span class="s1">&#39;principal_flag&#39;</span><span class="p">,</span><span class="s1">&#39;boro1&#39;</span><span class="p">,</span><span class="s1">&#39;sc5&#39;</span><span class="p">,</span><span class="s1">&#39;lgc&#39;</span><span class="p">,</span><span class="s1">&#39;spv&#39;</span><span class="p">,</span><span class="s1">&#39;filler&#39;</span><span class="p">,</span><span class="s1">&#39;numeric_ind&#39;</span><span class="p">,</span><span class="s1">&#39;GFT&#39;</span><span class="p">,</span><span class="s1">&#39;len_full_name&#39;</span><span class="p">,</span><span class="s1">&#39;full_stname&#39;</span><span class="p">,</span><span class="s1">&#39;min_SNL&#39;</span><span class="p">,</span><span class="s1">&#39;stn20&#39;</span><span class="p">,</span><span class="s1">&#39;ht_name_type_code&#39;</span><span class="p">,</span><span class="s1">&#39;filler&#39;</span><span class="p">]</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#bl_guide: contains official NYCHA stairhall addresses and associated BBL values</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#bl_guide: contains official NYCHA stairhall addresses and associated BBL values</span>
 <span class="n">bl_guide</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;stairhalls.csv&#39;</span><span class="p">)</span>
 <span class="n">bl_guide</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">bl_guide</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">boro_num_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;MANHATTAN&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;BROOKLYN&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;QUEENS&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;STATEN ISLAND&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">boro_num_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;MANHATTAN&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;BROOKLYN&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;QUEENS&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;STATEN ISLAND&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 <span class="n">bl_guide</span><span class="p">[</span><span class="s1">&#39;BORO&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bl_guide</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">boro_num_dict</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
 <span class="n">bl_guide</span><span class="p">[</span><span class="s1">&#39;TDS_NUM&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bl_guide</span><span class="p">[</span><span class="s1">&#39;LOCATION&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">]))</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Match building BBLs to Property Address Directory BBL table</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Match building BBLs to Property Address Directory BBL table</span>
 <span class="n">nycha_bbl</span> <span class="o">=</span> <span class="n">bbl</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">bl_guide</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;boro&#39;</span><span class="p">,</span><span class="s1">&#39;block&#39;</span><span class="p">,</span><span class="s1">&#39;lot&#39;</span><span class="p">],</span> <span class="n">right_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BORO&#39;</span><span class="p">,</span><span class="s1">&#39;BLOCK&#39;</span><span class="p">,</span><span class="s1">&#39;LOT&#39;</span><span class="p">],</span> <span class="n">indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">nycha_bbl</span> <span class="o">=</span> <span class="n">nycha_bbl</span><span class="p">[</span><span class="n">nycha_bbl</span><span class="p">[</span><span class="s1">&#39;_merge&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;both&#39;</span><span class="p">]</span>
 <span class="n">nycha_bbl</span> <span class="o">=</span> <span class="n">nycha_bbl</span><span class="p">[[</span><span class="s1">&#39;TDS_NUM&#39;</span><span class="p">,</span><span class="s1">&#39;boro&#39;</span><span class="p">,</span><span class="s1">&#39;block&#39;</span><span class="p">,</span><span class="s1">&#39;lot&#39;</span><span class="p">,</span><span class="s1">&#39;numaddr&#39;</span><span class="p">,</span> <span class="s1">&#39;numbf&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Merge NYCHA BBLs one-to-many to PAD address table</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Merge NYCHA BBLs one-to-many to PAD address table</span>
 <span class="n">nycha_addr</span> <span class="o">=</span> <span class="n">nycha_bbl</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;boro&#39;</span><span class="p">,</span><span class="s1">&#39;block&#39;</span><span class="p">,</span><span class="s1">&#39;lot&#39;</span><span class="p">])</span>
 <span class="n">nycha_addr</span> <span class="o">=</span> <span class="n">nycha_addr</span><span class="p">[</span><span class="n">nycha_addr</span><span class="p">[</span><span class="s1">&#39;TDS_NUM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">x</span><span class="p">))]</span>
 <span class="n">nycha_addr</span> <span class="o">=</span> <span class="n">nycha_addr</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">snd</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;boro&#39;</span><span class="p">,</span><span class="s1">&#39;sc5&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Screen out invalid address numbers/address ranges (those with GARAGE, etc.)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Screen out invalid address numbers/address ranges (those with GARAGE, etc.)</span>
 
 <span class="k">def</span> <span class="nf">is_valid_address_number</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
     <span class="n">test_value</span> <span class="o">=</span> <span class="kc">None</span>
@@ -15103,20 +15106,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
                                        <span class="s1">&#39;lhnd&#39;</span><span class="p">,</span><span class="s1">&#39;lsos&#39;</span><span class="p">,</span><span class="s1">&#39;hhnd&#39;</span><span class="p">,</span><span class="s1">&#39;hsos&#39;</span><span class="p">,</span><span class="s1">&#39;parity&#39;</span><span class="p">,</span> <span class="s1">&#39;stname_x&#39;</span><span class="p">,</span> <span class="s1">&#39;stname_y&#39;</span><span class="p">,</span><span class="s1">&#39;addrtype&#39;</span><span class="p">,</span><span class="s1">&#39;GFT&#39;</span><span class="p">]]</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Create unique row for each address number in matching address ranges</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Create unique row for each address number in matching address ranges</span>
 
 <span class="k">def</span> <span class="nf">expand_address_range</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
     <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;lhnd&#39;</span><span class="p">])</span>
@@ -15137,39 +15140,39 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <span class="k">return</span><span class="p">(</span><span class="n">expanded_df</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_addresses_expanded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_addresses_expanded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">nycha_addr_ranges</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()):</span>
     <span class="n">nycha_addresses_expanded</span> <span class="o">=</span> <span class="n">nycha_addresses_expanded</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expand_address_range</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Add borough names and standardize addresses</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Add borough names and standardize addresses</span>
 <span class="n">boro_num_to_name_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;MANHATTAN&#39;</span><span class="p">,</span>
                          <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;BRONX&#39;</span><span class="p">,</span>
                          <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;BROOKLYN&#39;</span><span class="p">,</span>
@@ -15181,96 +15184,96 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">nycha_addresses_expanded</span><span class="p">[</span><span class="s1">&#39;FULL_ADD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nycha_addresses_expanded</span><span class="p">[</span><span class="s1">&#39;HOUSE_NUM&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="n">nycha_addresses_expanded</span><span class="p">[</span><span class="s1">&#39;STREET_NAME_STD&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;, &#39;</span><span class="o">+</span><span class="n">nycha_addresses_expanded</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;, NY&#39;</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_addr_full</span> <span class="o">=</span> <span class="n">nycha_addresses_expanded</span><span class="p">[[</span><span class="s1">&#39;TDS_NUM&#39;</span><span class="p">,</span> <span class="s1">&#39;HOUSE_NUM&#39;</span><span class="p">,</span> <span class="s1">&#39;STREET_NAME_STD&#39;</span><span class="p">,</span> <span class="s1">&#39;BOROUGH&#39;</span><span class="p">,</span> <span class="s1">&#39;FULL_ADD&#39;</span><span class="p">]]</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_addr_full</span> <span class="o">=</span> <span class="n">nycha_addresses_expanded</span><span class="p">[[</span><span class="s1">&#39;TDS_NUM&#39;</span><span class="p">,</span> <span class="s1">&#39;HOUSE_NUM&#39;</span><span class="p">,</span> <span class="s1">&#39;STREET_NAME_STD&#39;</span><span class="p">,</span> <span class="s1">&#39;BOROUGH&#39;</span><span class="p">,</span> <span class="s1">&#39;FULL_ADD&#39;</span><span class="p">]]</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5 id="Adding-official-NYCHA-addresses-to-list,-if-not-already-contained">Adding official NYCHA addresses to list, if not already contained<a class="anchor-link" href="#Adding-official-NYCHA-addresses-to-list,-if-not-already-contained">&#182;</a></h5>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h5 id="Adding-official-NYCHA-addresses-to-list,-if-not-already-contained">Adding official NYCHA addresses to list, if not already contained<a class="anchor-link" href="#Adding-official-NYCHA-addresses-to-list,-if-not-already-contained">&#182;</a></h5>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Supplement with NYCHA addresses from PTAD shapefile (which lacks many intermediate address nums)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Supplement with NYCHA addresses from PTAD shapefile (which lacks many intermediate address nums)</span>
 <span class="n">nycha_addr_official</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;STD_NYCHA/NYCHA_Address_Points.geojson&#39;</span><span class="p">)</span>
 <span class="n">nycha_addr_official</span><span class="p">[</span><span class="s1">&#39;STREET_NAME_STD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nycha_addr_official</span><span class="p">[</span><span class="s1">&#39;STREET&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(?&lt;=[\d]+)((TH)|(RD)|(ST)|(ND))&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
 <span class="n">nycha_addr_official</span><span class="p">[</span><span class="s1">&#39;FULL_ADD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nycha_addr_official</span><span class="p">[</span><span class="s1">&#39;HOUSE_NUM&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="n">nycha_addr_official</span><span class="p">[</span><span class="s1">&#39;STREET_NAME_STD&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;, &#39;</span><span class="o">+</span><span class="n">nycha_addr_official</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">]</span><span class="o">+</span><span class="s1">&#39;, NY&#39;</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_addr_full</span> <span class="o">=</span> <span class="n">nycha_addr_full</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nycha_addr_official</span><span class="p">[[</span><span class="s1">&#39;TDS_NUM&#39;</span><span class="p">,</span> <span class="s1">&#39;HOUSE_NUM&#39;</span><span class="p">,</span> <span class="s1">&#39;STREET_NAME_STD&#39;</span><span class="p">,</span> <span class="s1">&#39;BOROUGH&#39;</span><span class="p">,</span> <span class="s1">&#39;FULL_ADD&#39;</span><span class="p">]])</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_addr_full</span> <span class="o">=</span> <span class="n">nycha_addr_full</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nycha_addr_official</span><span class="p">[[</span><span class="s1">&#39;TDS_NUM&#39;</span><span class="p">,</span> <span class="s1">&#39;HOUSE_NUM&#39;</span><span class="p">,</span> <span class="s1">&#39;STREET_NAME_STD&#39;</span><span class="p">,</span> <span class="s1">&#39;BOROUGH&#39;</span><span class="p">,</span> <span class="s1">&#39;FULL_ADD&#39;</span><span class="p">]])</span>
 
 <span class="n">nycha_addr_full</span> <span class="o">=</span> <span class="n">nycha_addr_full</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;HOUSE_NUM&#39;</span><span class="p">,</span> <span class="s1">&#39;STREET_NAME_STD&#39;</span><span class="p">,</span> <span class="s1">&#39;BOROUGH&#39;</span><span class="p">])</span>
 <span class="n">nycha_addr_full</span> <span class="o">=</span> <span class="n">nycha_addr_full</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5 id="Manually-adjusting-select-addresses">Manually adjusting select addresses<a class="anchor-link" href="#Manually-adjusting-select-addresses">&#182;</a></h5>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h5 id="Manually-adjusting-select-addresses">Manually adjusting select addresses<a class="anchor-link" href="#Manually-adjusting-select-addresses">&#182;</a></h5>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Add St. Nicholas Ave addresses</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Add St. Nicholas Ave addresses</span>
 <span class="n">stn_ave_addr</span> <span class="o">=</span> <span class="n">nycha_addr_full</span><span class="p">[</span><span class="n">nycha_addr_full</span><span class="p">[</span><span class="s1">&#39;STREET_NAME_STD&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;SAINT NICHOLAS&#39;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">stn_ave_addr</span><span class="p">[</span><span class="s1">&#39;STREET_NAME_STD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ST NICHOLAS AVENUE&#39;</span>
 
@@ -15301,20 +15304,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">ftw</span><span class="p">[</span><span class="s1">&#39;STREET_NAME_STD&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;FT WASHINGTON AVENUE&#39;</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Put it all together...</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Put it all together...</span>
 <span class="n">new_addr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="p">[</span><span class="n">stn_ave_addr</span><span class="p">,</span> <span class="n">seventh_ave_addr</span><span class="p">,</span> <span class="n">acp_addr</span><span class="p">,</span> <span class="n">eighth_ave_addr</span><span class="p">,</span> <span class="n">w27</span><span class="p">,</span> <span class="n">ua1</span><span class="p">,</span> <span class="n">ua2</span><span class="p">,</span> <span class="n">gb</span><span class="p">,</span> <span class="n">ftw</span><span class="p">]:</span>
@@ -15323,58 +15326,58 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">nycha_addr_full</span> <span class="o">=</span> <span class="n">nycha_addr_full</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_addr</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_addr_full</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;NYCHA_addr_full_OFFICIAL_PLUS_BBL.csv&#39;</span><span class="p">)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_addr_full</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;NYCHA_addr_full_OFFICIAL_PLUS_BBL.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Match-voter-file-addresses-and-NYCHA-addresses-to-isolate-NYCHA-voters">Match voter file addresses and NYCHA addresses to isolate NYCHA voters<a class="anchor-link" href="#Match-voter-file-addresses-and-NYCHA-addresses-to-isolate-NYCHA-voters">&#182;</a></h4>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h4 id="Match-voter-file-addresses-and-NYCHA-addresses-to-isolate-NYCHA-voters">Match voter file addresses and NYCHA addresses to isolate NYCHA voters<a class="anchor-link" href="#Match-voter-file-addresses-and-NYCHA-addresses-to-isolate-NYCHA-voters">&#182;</a></h4>
+        </div>
+        </div>
+    </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5 id="Reload-datasets-produced-above">Reload datasets produced above<a class="anchor-link" href="#Reload-datasets-produced-above">&#182;</a></h5>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h5 id="Reload-datasets-produced-above">Reload datasets produced above<a class="anchor-link" href="#Reload-datasets-produced-above">&#182;</a></h5>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Load voter records from NYCHA electoral districts isolated above, alongside addresses</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Load voter records from NYCHA electoral districts isolated above, alongside addresses</span>
 <span class="n">nycha_addr_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;NYCHA_addr_full_OFFICIAL_PLUS_BBL.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">nycha_addr_full</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
     <span class="n">nycha_addr_full</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">nycha_addr_full</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[\s]+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
@@ -15386,98 +15389,98 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <span class="n">full_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">full_df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[\s]+&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5 id="Set-up-index-using-Record-Linkage-Toolkit">Set up index using Record Linkage Toolkit<a class="anchor-link" href="#Set-up-index-using-Record-Linkage-Toolkit">&#182;</a></h5><p>Here, match exactly on Borough and Address number, while allowing minor variations in street spellings</p>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h5 id="Set-up-index-using-Record-Linkage-Toolkit">Set up index using Record Linkage Toolkit<a class="anchor-link" href="#Set-up-index-using-Record-Linkage-Toolkit">&#182;</a></h5><p>Here, match exactly on Borough and Address number, while allowing minor variations in street spellings</p>
 
-</div>
-</div>
-</div>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">indexer</span> <span class="o">=</span> <span class="n">recordlinkage</span><span class="o">.</span><span class="n">Index</span><span class="p">()</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">indexer</span> <span class="o">=</span> <span class="n">recordlinkage</span><span class="o">.</span><span class="n">Index</span><span class="p">()</span>
 <span class="n">indexer</span><span class="o">.</span><span class="n">block</span><span class="p">(</span><span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">,</span><span class="s1">&#39;RADDNUMBER&#39;</span><span class="p">],</span> <span class="n">right_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">,</span><span class="s1">&#39;HOUSE_NUM&#39;</span><span class="p">])</span>
 
 <span class="n">candidates</span> <span class="o">=</span> <span class="n">indexer</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">full_df</span><span class="p">,</span> <span class="n">nycha_addr_full</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">compare</span> <span class="o">=</span> <span class="n">recordlinkage</span><span class="o">.</span><span class="n">Compare</span><span class="p">()</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">compare</span> <span class="o">=</span> <span class="n">recordlinkage</span><span class="o">.</span><span class="n">Compare</span><span class="p">()</span>
 
 <span class="n">compare</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="s1">&#39;RSTREETNAME&#39;</span><span class="p">,</span><span class="s1">&#39;STREET_NAME_STD&#39;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;STREET_NAME&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5 id="Obtain-matching-records">Obtain matching records<a class="anchor-link" href="#Obtain-matching-records">&#182;</a></h5>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h5 id="Obtain-matching-records">Obtain matching records<a class="anchor-link" href="#Obtain-matching-records">&#182;</a></h5>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Obtain matching index pairs</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Obtain matching index pairs</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">compare</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">candidates</span><span class="p">,</span> <span class="n">full_df</span><span class="p">,</span> <span class="n">nycha_addr_full</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Fetch information on matches for validation</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Fetch information on matches for validation</span>
 <span class="n">match_candidates</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;FULL_DF_MOD_ADDRESS&#39;</span><span class="p">:[],</span> <span class="s1">&#39;NYCHA_ADDRESSES_FULL_ADD&#39;</span><span class="p">:[],</span> <span class="s1">&#39;FULL_DF_IND&#39;</span><span class="p">:[],</span> <span class="s1">&#39;NYCHA_ADDRESS_IND&#39;</span><span class="p">:[]}</span>
 
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">features</span><span class="p">[</span><span class="n">features</span><span class="p">[</span><span class="s1">&#39;STREET_NAME&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()):</span>
@@ -15491,73 +15494,73 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <span class="n">match_candidates</span><span class="p">[</span><span class="s1">&#39;NYCHA_ADDRESS_IND&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nycha_add_ind</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">match_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">match_candidates</span><span class="p">)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">match_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">match_candidates</span><span class="p">)</span>
 <span class="n">match_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;_match_candidates_2022.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">match_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;_match_candidates_2022.csv&#39;</span><span class="p">)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">match_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;_match_candidates_2022.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Identify matched rows in voter file</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Identify matched rows in voter file</span>
 <span class="n">matched_voter_indices</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">match_df</span><span class="p">[</span><span class="s1">&#39;FULL_DF_IND&#39;</span><span class="p">])</span>
 
 <span class="n">full_df_ind</span> <span class="o">=</span> <span class="n">full_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">full_df_ind</span><span class="p">[</span><span class="s1">&#39;_match&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">matched_voter_indices</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">match_mapper</span> <span class="o">=</span> <span class="p">{}</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">match_mapper</span> <span class="o">=</span> <span class="p">{}</span>
 
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">match_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()):</span>
     <span class="n">row_data</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -15565,31 +15568,31 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h5 id="Add-NYCHA-development-information-to-matched-addresses">Add NYCHA development information to matched addresses<a class="anchor-link" href="#Add-NYCHA-development-information-to-matched-addresses">&#182;</a></h5>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h5 id="Add-NYCHA-development-information-to-matched-addresses">Add NYCHA development information to matched addresses<a class="anchor-link" href="#Add-NYCHA-development-information-to-matched-addresses">&#182;</a></h5>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_matched_dev_info</span><span class="p">(</span><span class="n">base_df</span><span class="p">,</span> <span class="n">mapper</span><span class="p">,</span> <span class="n">supp_df</span><span class="p">):</span>                 
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_matched_dev_info</span><span class="p">(</span><span class="n">base_df</span><span class="p">,</span> <span class="n">mapper</span><span class="p">,</span> <span class="n">supp_df</span><span class="p">):</span>
     <span class="n">supp_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;VOTER_IND&#39;</span><span class="p">:[],</span> <span class="s1">&#39;NYCHA_IND&#39;</span><span class="p">:[],</span> <span class="s1">&#39;TDS&#39;</span><span class="p">:[],</span> <span class="s1">&#39;NYCHA_ADD&#39;</span><span class="p">:[]}</span>
     
     <span class="n">matched_df</span> <span class="o">=</span> <span class="n">base_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
@@ -15622,104 +15625,104 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">supp_nycha_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">supp_nycha_info</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">full_df_supp</span> <span class="o">=</span> <span class="n">full_df_ind</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">supp_nycha_df</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_on</span> <span class="o">=</span> <span class="s1">&#39;VOTER_IND&#39;</span><span class="p">)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">full_df_supp</span> <span class="o">=</span> <span class="n">full_df_ind</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">supp_nycha_df</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_on</span> <span class="o">=</span> <span class="s1">&#39;VOTER_IND&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_voter_set</span> <span class="o">=</span> <span class="n">full_df_supp</span><span class="p">[</span><span class="n">full_df_supp</span><span class="p">[</span><span class="s1">&#39;_match&#39;</span><span class="p">]]</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_voter_set</span> <span class="o">=</span> <span class="n">full_df_supp</span><span class="p">[</span><span class="n">full_df_supp</span><span class="p">[</span><span class="s1">&#39;_match&#39;</span><span class="p">]]</span>
 <span class="n">nycha_voter_set</span> <span class="o">=</span> <span class="n">nycha_voter_set</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">nycha_voter_set</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="s1">&#39;Unnamed&#39;</span> <span class="ow">in</span> <span class="n">col</span><span class="p">])</span>
 <span class="n">nycha_voter_set</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;NYCHA_voter_set_strict.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Expand-elections-field-to-arrive-at-turnout-rates-by-election">Expand elections field to arrive at turnout rates by election<a class="anchor-link" href="#Expand-elections-field-to-arrive-at-turnout-rates-by-election">&#182;</a></h4>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h4 id="Expand-elections-field-to-arrive-at-turnout-rates-by-election">Expand elections field to arrive at turnout rates by election<a class="anchor-link" href="#Expand-elections-field-to-arrive-at-turnout-rates-by-election">&#182;</a></h4>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_voter_set</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;NYCHA_voter_set_strict.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_voter_set</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;NYCHA_voter_set_strict.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1">#Remove purged voter records</span>
 <span class="n">nycha_voter_set</span> <span class="o">=</span> <span class="n">nycha_voter_set</span><span class="p">[</span><span class="n">nycha_voter_set</span><span class="p">[</span><span class="s1">&#39;STATUS&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;P&#39;</span><span class="p">]</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_voter_set</span><span class="p">[</span><span class="s1">&#39;ElecList&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nycha_voter_set</span><span class="p">[</span><span class="s1">&#39;VoterHistory&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">set</span><span class="p">([</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\(\w+\)&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)]))</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nycha_voter_set</span><span class="p">[</span><span class="s1">&#39;ElecList&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nycha_voter_set</span><span class="p">[</span><span class="s1">&#39;VoterHistory&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">set</span><span class="p">([</span><span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\(\w+\)&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)]))</span>
 <span class="c1">#nycha_voter_set[&#39;ElecList&#39;] = nycha_voter_set[&#39;VoterHistory&#39;].apply(lambda x: set(name.strip() for name in str(x).split(&#39;;&#39;)))</span>
 
 <span class="n">nycha_voter_set</span> <span class="o">=</span> <span class="n">nycha_voter_set</span><span class="p">[[</span><span class="s1">&#39;LASTNAME&#39;</span><span class="p">,</span><span class="s1">&#39;FIRSTNAME&#39;</span><span class="p">,</span><span class="s1">&#39;FULL_ED&#39;</span><span class="p">,</span><span class="s1">&#39;LD&#39;</span><span class="p">,</span><span class="s1">&#39;CD&#39;</span><span class="p">,</span><span class="s1">&#39;SD&#39;</span><span class="p">,</span><span class="s1">&#39;AD&#39;</span><span class="p">,</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">,</span><span class="s1">&#39;TDS&#39;</span><span class="p">,</span><span class="s1">&#39;ElecList&#39;</span><span class="p">]]</span>
 <span class="n">nycha_voter_set</span><span class="p">[</span><span class="s1">&#39;_counter&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Add city council district info by ED</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Add city council district info by ED</span>
 <span class="n">ed_to_council</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;ED22A1_to_Council_District.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;ElectDist&#39;</span><span class="p">)</span>
 <span class="n">error_eds</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -15736,20 +15739,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">nycha_voter_set</span><span class="p">[</span><span class="s1">&#39;Council_Dist&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nycha_voter_set</span><span class="p">[</span><span class="s1">&#39;FULL_ED&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">progress_apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">get_cd</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">ed_to_council</span><span class="p">))</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Group election identifiers and define election types</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Group election identifiers and define election types</span>
 <span class="n">ID_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;2007GE&#39;</span><span class="p">:</span><span class="nb">set</span><span class="p">([</span><span class="s1">&#39;20071106 GE&#39;</span><span class="p">,</span> <span class="s1">&#39;20071105 GE&#39;</span><span class="p">,</span> <span class="s1">&#39;20071106 ??&#39;</span><span class="p">,</span> <span class="s1">&#39;GENERAL 2007&#39;</span><span class="p">,</span> <span class="s1">&#39;GENERAL ELECTION 2007&#39;</span><span class="p">,</span> <span class="s1">&#39;2007 GENERAL  ELECTION&#39;</span><span class="p">,</span> <span class="s1">&#39;2007 General Election&#39;</span><span class="p">,</span> <span class="s1">&#39;2007 GENERAL ELECTION&#39;</span><span class="p">,</span> <span class="s1">&#39;General Election, 2007&#39;</span><span class="p">,</span> <span class="s1">&#39;07 GENERAL ELECTION&#39;</span><span class="p">,</span> <span class="s1">&#39;20071006 GE&#39;</span><span class="p">,</span> <span class="s1">&#39;General Election 2007&#39;</span><span class="p">,</span> <span class="s1">&#39;2007 GENERAL&#39;</span><span class="p">]),</span>
            <span class="s1">&#39;2007PR&#39;</span><span class="p">:</span><span class="nb">set</span><span class="p">([</span><span class="s1">&#39;20070918 PR&#39;</span><span class="p">,</span><span class="s1">&#39;PRIMARY ELECTION 2007&#39;</span><span class="p">,</span> <span class="s1">&#39;2007 Primary Election&#39;</span><span class="p">]),</span>
            <span class="s1">&#39;2007SP&#39;</span><span class="p">:[</span><span class="s1">&#39;Special Election 2007&#39;</span><span class="p">],</span>
@@ -15821,20 +15824,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
             <span class="s1">&#39;_AMBIG&#39;</span><span class="p">:</span><span class="nb">set</span><span class="p">([</span><span class="s1">&#39;08 PRIMARY ELECTION&#39;</span><span class="p">,</span> <span class="s1">&#39;14 PRIMARY ELECTION&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIMARY 2014&#39;</span><span class="p">,</span> <span class="s1">&#39;12 PRIMARY ELECTION&#39;</span><span class="p">,</span> <span class="s1">&#39;Primary Election, 2012&#39;</span><span class="p">,</span> <span class="s1">&#39;2012 PRIMARY ELECTION&#39;</span><span class="p">,</span> <span class="s1">&#39;2012 Primary Election&#39;</span><span class="p">,</span><span class="s1">&#39;Primary Election, 2008&#39;</span><span class="p">,</span> <span class="s1">&#39;2008 PRIMARY ELECTION&#39;</span><span class="p">,</span> <span class="s1">&#39;Special Election, 2009&#39;</span><span class="p">,</span> <span class="s1">&#39;SPECIAL ELECTION 2009&#39;</span><span class="p">,</span> <span class="s1">&#39;20110502 GE&#39;</span><span class="p">])}</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Standardize election identifiers</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Standardize election identifiers</span>
 <span class="k">def</span> <span class="nf">get_common_id</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">id_dict</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">id_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
@@ -15850,66 +15853,66 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <span class="n">nycha_voter_set</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">nycha_voter_set</span><span class="p">[</span><span class="s1">&#39;Clean_Elec_List&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Write cleaned set</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Write cleaned set</span>
 <span class="n">nycha_voter_set</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Prepared_NYCHA_Voter_Set_2022.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Computing-Outputs">Computing Outputs<a class="anchor-link" href="#Computing-Outputs">&#182;</a></h3><p>For the following products (and in the actual analysis of NYCHA voter turnout), the implied denominator is the total number of registered voters within the relevant subset. The alternative -- eligible voters at NYCHA developments in the relevant subset -- was not used, due to the fact that a substantial number of unofficial / unauthorized residents are included in the registered voter set. Using NYCHA population figures of any type as the denomninator, therefore, would artifically inflate turnout percentages in most cases, as the number of registered voters frequenty exceeds the official total of residents over 18.</p>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h3 id="Computing-Outputs">Computing Outputs<a class="anchor-link" href="#Computing-Outputs">&#182;</a></h3><p>For the following products (and in the actual analysis of NYCHA voter turnout), the implied denominator is the total number of registered voters within the relevant subset. The alternative -- eligible voters at NYCHA developments in the relevant subset -- was not used, due to the fact that a substantial number of unofficial / unauthorized residents are included in the registered voter set. Using NYCHA population figures of any type as the denomninator, therefore, would artifically inflate turnout percentages in most cases, as the number of registered voters frequenty exceeds the official total of residents over 18.</p>
 
-</div>
-</div>
-</div>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Reload fully filtered and prepared voter dataset</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Reload fully filtered and prepared voter dataset</span>
 <span class="n">nycha_voter_set</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Prepared_NYCHA_Voter_Set_2022.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Produce average turnout at NYCHA developments by election, by borough</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Produce average turnout at NYCHA developments by election, by borough</span>
 <span class="n">boro</span> <span class="o">=</span> <span class="n">nycha_voter_set</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="n">nycha_voter_set</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">13</span><span class="p">:]]</span>
 
 <span class="c1">#...by assembly district:</span>
@@ -15928,36 +15931,36 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">dev</span> <span class="o">=</span> <span class="n">nycha_voter_set</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;BOROUGH&#39;</span><span class="p">,</span><span class="s1">&#39;TDS&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="n">nycha_voter_set</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">13</span><span class="p">:]]</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">boro</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;BROOKLYN&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">boro</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;BROOKLYN&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Import development info for filtering and display</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Import development info for filtering and display</span>
 <span class="n">dev_info</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;overview_table_data.csv&#39;</span><span class="p">)</span>
 <span class="n">dev_info</span> <span class="o">=</span> <span class="n">dev_info</span><span class="p">[[</span><span class="s1">&#39;TDS&#39;</span><span class="p">,</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">,</span><span class="s1">&#39;CONS_TDS&#39;</span><span class="p">,</span><span class="s1">&#39;CONS_NAME&#39;</span><span class="p">,</span><span class="s1">&#39;GEO_BORO&#39;</span><span class="p">]]</span>
 
@@ -15977,38 +15980,38 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">dev_info</span> <span class="o">=</span> <span class="n">dev_info</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">recent_pop</span><span class="p">[[</span><span class="s1">&#39;TDS_NUMBER&#39;</span><span class="p">,</span><span class="s1">&#39;18_PLUS&#39;</span><span class="p">,</span><span class="s1">&#39;MONTH_ID&#39;</span><span class="p">]],</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;TDS&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;TDS_NUMBER&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Merge dev data with voter records</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Merge dev data with voter records</span>
 <span class="n">rates_by_dev_enriched</span> <span class="o">=</span> <span class="n">dev_info</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dev</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;TDS&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;TDS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">rates_by_dev_enriched</span> <span class="o">=</span> <span class="n">rates_by_dev_enriched</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;GEO_BORO&#39;</span><span class="p">,</span><span class="s1">&#39;CONS_TDS&#39;</span><span class="p">,</span><span class="s1">&#39;TDS&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;GEO_BORO&#39;</span><span class="p">,</span><span class="s1">&#39;CONS_TDS&#39;</span><span class="p">,</span><span class="s1">&#39;TDS&#39;</span><span class="p">])</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">elec_type_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;2007GE&#39;</span><span class="p">,</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">elec_type_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;GENERAL&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;2007GE&#39;</span><span class="p">,</span>
                               <span class="s1">&#39;2008GE&#39;</span><span class="p">,</span>
                               <span class="s1">&#39;2009GE&#39;</span><span class="p">,</span>
                               <span class="s1">&#39;2010GE&#39;</span><span class="p">,</span>
@@ -16078,20 +16081,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
                  <span class="kc">None</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;_AMBIG&#39;</span><span class="p">}}</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">summ_table</span> <span class="o">=</span> <span class="n">rates_by_dev_enriched</span><span class="p">[[</span><span class="s1">&#39;2016GE&#39;</span><span class="p">,</span><span class="s1">&#39;2016PP&#39;</span><span class="p">,</span><span class="s1">&#39;2017GE&#39;</span><span class="p">,</span><span class="s1">&#39;2017PR&#39;</span><span class="p">,</span><span class="s1">&#39;2018GE&#39;</span><span class="p">,</span><span class="s1">&#39;2018PR_0913&#39;</span><span class="p">,</span><span class="s1">&#39;2020GE&#39;</span><span class="p">,</span><span class="s1">&#39;2020PR&#39;</span><span class="p">,</span><span class="s1">&#39;2021GE&#39;</span><span class="p">,</span><span class="s1">&#39;2021PR&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">summ_table</span> <span class="o">=</span> <span class="n">rates_by_dev_enriched</span><span class="p">[[</span><span class="s1">&#39;2016GE&#39;</span><span class="p">,</span><span class="s1">&#39;2016PP&#39;</span><span class="p">,</span><span class="s1">&#39;2017GE&#39;</span><span class="p">,</span><span class="s1">&#39;2017PR&#39;</span><span class="p">,</span><span class="s1">&#39;2018GE&#39;</span><span class="p">,</span><span class="s1">&#39;2018PR_0913&#39;</span><span class="p">,</span><span class="s1">&#39;2020GE&#39;</span><span class="p">,</span><span class="s1">&#39;2020PR&#39;</span><span class="p">,</span><span class="s1">&#39;2021GE&#39;</span><span class="p">,</span><span class="s1">&#39;2021PR&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">summ_table</span><span class="p">[</span><span class="s1">&#39;YEAR&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">summ_table</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)[:</span><span class="mi">4</span><span class="p">])</span>
 
 <span class="k">def</span> <span class="nf">get_type</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">dict_name</span><span class="p">):</span>
@@ -16104,105 +16107,105 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">summ_table</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;YEAR&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;TYPE&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;YEAR&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">summ_table</span> <span class="o">=</span> <span class="n">rates_by_dev_enriched</span><span class="p">[[</span><span class="s1">&#39;2016GE&#39;</span><span class="p">,</span><span class="s1">&#39;2016PP&#39;</span><span class="p">,</span><span class="s1">&#39;2017GE&#39;</span><span class="p">,</span><span class="s1">&#39;2017PR&#39;</span><span class="p">,</span><span class="s1">&#39;2018GE&#39;</span><span class="p">,</span><span class="s1">&#39;2018PR_0913&#39;</span><span class="p">,</span><span class="s1">&#39;2020GE&#39;</span><span class="p">,</span><span class="s1">&#39;2020PR&#39;</span><span class="p">,</span><span class="s1">&#39;2021GE&#39;</span><span class="p">,</span><span class="s1">&#39;2021PR&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="c1">#.loc[&#39;mean&#39;].reset_index()</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">summ_table</span> <span class="o">=</span> <span class="n">rates_by_dev_enriched</span><span class="p">[[</span><span class="s1">&#39;2016GE&#39;</span><span class="p">,</span><span class="s1">&#39;2016PP&#39;</span><span class="p">,</span><span class="s1">&#39;2017GE&#39;</span><span class="p">,</span><span class="s1">&#39;2017PR&#39;</span><span class="p">,</span><span class="s1">&#39;2018GE&#39;</span><span class="p">,</span><span class="s1">&#39;2018PR_0913&#39;</span><span class="p">,</span><span class="s1">&#39;2020GE&#39;</span><span class="p">,</span><span class="s1">&#39;2020PR&#39;</span><span class="p">,</span><span class="s1">&#39;2021GE&#39;</span><span class="p">,</span><span class="s1">&#39;2021PR&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="c1">#.loc[&#39;mean&#39;].reset_index()</span>
 <span class="n">summ_table</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Summarize turnout by election type</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Summarize turnout by election type</span>
 <span class="n">rates_by_dev_summary</span> <span class="o">=</span> <span class="n">rates_by_dev_enriched</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">rates_by_dev_enriched</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">6</span><span class="p">:])</span>
 
 <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">elec_type_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">rates_by_dev_summary</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_MEDIAN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rates_by_dev_enriched</span><span class="p">[</span><span class="n">values</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rates_by_dev_enriched</span><span class="p">[</span><span class="n">rates_by_dev_enriched</span><span class="p">[</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)]</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;Rates_by_Development_2022.xlsx&#39;</span><span class="p">)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rates_by_dev_enriched</span><span class="p">[</span><span class="n">rates_by_dev_enriched</span><span class="p">[</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)]</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;Rates_by_Development_2022.xlsx&#39;</span><span class="p">)</span>
 <span class="n">rates_by_dev_summary</span><span class="p">[</span><span class="n">rates_by_dev_summary</span><span class="p">[</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;None_MEDIAN&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;Rates_by_Development_Summary_2022.xlsx&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Developments-of-Voting-Rule-WG-Members">Developments of Voting Rule WG Members<a class="anchor-link" href="#Developments-of-Voting-Rule-WG-Members">&#182;</a></h3>
-</div>
-</div>
-</div>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+        </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+            <h3 id="Developments-of-Voting-Rule-WG-Members">Developments of Voting Rule WG Members<a class="anchor-link" href="#Developments-of-Voting-Rule-WG-Members">&#182;</a></h3>
+        </div>
+        </div>
+    </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Jackson [120, cons 267], Red Hook West [79], Polo Grounds [149], Soundview [71], Howard [72], Bland [54, cons 186], Nostrand [43, cons 36], Riis[18/19], Queensbridge [5/505], </span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Jackson [120, cons 267], Red Hook West [79], Polo Grounds [149], Soundview [71], Howard [72], Bland [54, cons 186], Nostrand [43, cons 36], Riis[18/19], Queensbridge [5/505], </span>
 <span class="c1">#Staten Island TBD</span>
 
 <span class="n">member_dev_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">120</span><span class="p">,</span> <span class="mi">79</span><span class="p">,</span> <span class="mi">149</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">505</span><span class="p">,</span> <span class="mi">114</span><span class="p">,</span> <span class="mi">38</span><span class="p">]</span>
 <span class="n">member_data</span> <span class="o">=</span> <span class="n">rates_by_dev_enriched</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="n">rates_by_dev_enriched</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()[</span><span class="s1">&#39;TDS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">member_dev_list</span><span class="p">)]</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">member_data_summary</span> <span class="o">=</span> <span class="n">member_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">member_data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">9</span><span class="p">:])</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">member_data_summary</span> <span class="o">=</span> <span class="n">member_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="n">member_data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">9</span><span class="p">:])</span>
 <span class="n">sum_col_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">col</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">elec_type_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">member_data_summary</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_MEDIAN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">member_data</span><span class="p">[</span><span class="n">values</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -16212,20 +16215,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     <span class="n">sum_col_list</span> <span class="o">=</span> <span class="n">sum_col_list</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_MEDIAN&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_MAX&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s1">_MIN&#39;</span><span class="p">]</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">riis</span> <span class="o">=</span> <span class="n">member_data_summary</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">riis</span> <span class="o">=</span> <span class="n">member_data_summary</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
 <span class="n">riis</span> <span class="o">=</span> <span class="n">riis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span><span class="kc">None</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">riis</span><span class="o">.</span><span class="n">columns</span><span class="p">},</span> <span class="n">columns</span><span class="o">=</span><span class="n">riis</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
 
 <span class="n">qns</span> <span class="o">=</span> <span class="n">member_data_summary</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">]]</span>
@@ -16239,20 +16242,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">qns_full</span> <span class="o">=</span> <span class="n">qns_full</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span><span class="kc">None</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">qns_full</span><span class="o">.</span><span class="n">columns</span><span class="p">},</span> <span class="n">columns</span><span class="o">=</span><span class="n">qns_full</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">combine_proportions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">combine_proportions</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">column</span><span class="p">):</span>
     <span class="n">votes_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
         <span class="n">votes_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">column</span><span class="p">]</span><span class="o">*</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;_counter&#39;</span><span class="p">])</span>
@@ -16278,73 +16281,73 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">member_data_summary</span> <span class="o">=</span> <span class="n">member_data_summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">riis</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qns</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">member_data_summary</span> <span class="o">=</span> <span class="n">member_data_summary</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">riis</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qns</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">member_data</span> <span class="o">=</span> <span class="n">member_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">riis_full</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qns_full</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">member_data_tables</span> <span class="o">=</span> <span class="n">member_data_summary</span><span class="p">[[</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">sum_col_list</span><span class="p">]</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">member_data_tables</span> <span class="o">=</span> <span class="n">member_data_summary</span><span class="p">[[</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">sum_col_list</span><span class="p">]</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">member_data_tables</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">member_data_tables</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">t</span><span class="p">[</span><span class="s1">&#39;TYPE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;level_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">t</span><span class="p">[</span><span class="s1">&#39;MEASURE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="s1">&#39;level_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">t</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">,</span><span class="s1">&#39;_del&#39;</span><span class="p">,</span><span class="s1">&#39;TURNOUT&#39;</span><span class="p">,</span><span class="s1">&#39;TYPE&#39;</span><span class="p">,</span> <span class="s1">&#39;MEASURE&#39;</span><span class="p">]</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">,</span><span class="s1">&#39;TYPE&#39;</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;TURNOUT&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;MEASURE&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">writer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s1">&#39;_tables_for_members/TABLES.xlsx&#39;</span><span class="p">)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">writer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s1">&#39;_tables_for_members/TABLES.xlsx&#39;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">t</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
     <span class="n">t_sub</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
@@ -16354,43 +16357,44 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">writer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">elec_by_development</span> <span class="o">=</span> <span class="n">member_data</span><span class="p">[[</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">]</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">member_data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">9</span><span class="p">:])]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">elec_by_development</span> <span class="o">=</span> <span class="n">member_data</span><span class="p">[[</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">]</span><span class="o">+</span><span class="nb">list</span><span class="p">(</span><span class="n">member_data</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">9</span><span class="p">:])]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;DEV_NAME&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">elec_by_development</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;_TEMP_wg_elections.xlsx&#39;</span><span class="p">)</span>
+    <div class="jp-Cell-inputWrapper">
+        <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+        </div>
+        <div class="jp-InputArea jp-Cell-inputArea">
+            <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+            <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+                <div class="CodeMirror cm-s-jupyter">
+                    <div class=" highlight hl-ipython3"><pre><span></span><span class="n">elec_by_development</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s1">&#39;_TEMP_wg_elections.xlsx&#39;</span><span class="p">)</span>
 </pre></div>
 
-     </div>
-</div>
-</div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+</div>
 </div>
 </body>
 
