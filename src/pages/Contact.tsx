@@ -3,16 +3,33 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
 import { FormControl, FormLabel } from '@mui/material';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
-  const [name, setName] = useState<string>('Name');
-  const [subject, setSubject] = useState<string>('Just dropping by...');
-  const [contactEmail, setContactEmail] = useState<string>(
-    'its-a-me@example.com'
-  );
+  const defaults = {
+    name: 'Name',
+    subject: 'Just dropping by...',
+    contactEmail: 'its-a-me@example.com',
+    emailError: false,
+    contactNumber: '(800) 888-8888',
+    message: "What's on your mind?"
+  };
+  const [name, setName] = useState<string>();
+  const [subject, setSubject] = useState<string>();
+  const [contactEmail, setContactEmail] = useState<string>();
   const [emailError, setEmailError] = useState<boolean>(false);
-  const [contactNumber, setContactNumber] = useState<string>('800-888-8888');
-  const [message, setMessage] = useState<string>("What's on your mind?");
+  const [contactNumber, setContactNumber] = useState<string>();
+  const [message, setMessage] = useState<string>();
+
+  emailjs.init('41dpsM5eCTMqhsLFZ');
+
+  const resetFields = () => {
+    setName('');
+    setSubject('');
+    setContactEmail('');
+    setContactNumber('');
+    setMessage('');
+  };
 
   const handleSubmit = (event: unknown) => {
     //@ts-ignore
@@ -20,6 +37,17 @@ export default function Contact() {
     if (!contactEmail) {
       setEmailError(true);
     }
+    const serviceId = 'ks_gmail';
+    const templateId = 'portfolio_contact';
+    const vars = {
+      from_name: name,
+      subject: subject,
+      contact_email: contactEmail,
+      contact_number: contactNumber,
+      message: message
+    };
+    emailjs.send(serviceId, templateId, vars);
+    resetFields();
   };
 
   return (
@@ -39,7 +67,9 @@ export default function Contact() {
           size="small"
           margin="dense"
           fullWidth
-          placeholder={name}
+          placeholder={defaults.name}
+          value={name}
+          className="formEl"
           onChange={(e) => setName(e.target.value)}
         ></Input>
         <FormLabel
@@ -51,7 +81,9 @@ export default function Contact() {
           size="small"
           margin="dense"
           fullWidth
-          placeholder={subject}
+          className="formEl"
+          placeholder={defaults.subject}
+          value={subject}
           onChange={(e) => setSubject(e.target.value)}
         ></Input>
         <FormLabel
@@ -64,7 +96,9 @@ export default function Contact() {
           margin="dense"
           fullWidth
           type="email"
-          placeholder={contactEmail}
+          className="formEl"
+          placeholder={defaults.contactEmail}
+          value={contactEmail}
           onChange={(e) => setContactEmail(e.target.value)}
           error={emailError}
         ></Input>
@@ -78,7 +112,9 @@ export default function Contact() {
           margin="dense"
           fullWidth
           type="phone"
-          placeholder={contactNumber}
+          className="formEl"
+          placeholder={defaults.contactNumber}
+          value={contactNumber}
           onChange={(e) => setContactNumber(e.target.value)}
         ></Input>
       </div>
@@ -99,7 +135,9 @@ export default function Contact() {
         fullWidth
         multiline
         minRows={3}
-        placeholder={message}
+        className="formEl"
+        placeholder={defaults.message}
+        value={message}
         onChange={(e) => setMessage(e.target.value)}
       ></TextField>
 
