@@ -14,8 +14,12 @@ export default function Contact() {
   const [contactNumber, setContactNumber] = useState<string>('800-888-8888');
   const [message, setMessage] = useState<string>("What's on your mind?");
 
-  const handleSubmit = (event: SubmitEvent) => {
+  const handleSubmit = (event: unknown) => {
+    //@ts-ignore
     event.preventDefault();
+    if (!contactEmail) {
+      setEmailError(true);
+    }
   };
 
   return (
@@ -99,7 +103,13 @@ export default function Contact() {
         onChange={(e) => setMessage(e.target.value)}
       ></TextField>
 
-      <Button>Submit</Button>
+      <Button
+        onClick={(e) => {
+          handleSubmit(e);
+        }}
+      >
+        Submit
+      </Button>
     </FormControl>
   );
 }

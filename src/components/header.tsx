@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import HeaderLinkSection from './headerLinkSection';
@@ -14,20 +13,6 @@ interface HeaderProps {
 
 export default function Header(props: HeaderProps) {
   const { sections, title } = props;
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-  /**Uncomment if using HeaderMenu component */
-
-  // const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
-  // const handleSectionClick = () => {
-  //   handleClose();
-  // };
 
   return (
     <Card>
