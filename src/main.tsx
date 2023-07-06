@@ -7,11 +7,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import { ThemeProvider } from '@mui/material/styles';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { KSUTheme } from './styles/MUITheme.ts';
 import About from './pages/About.tsx';
+import Contact from './pages/Contact.tsx';
 
 const sections = [
   { title: 'Home', url: '/' },
@@ -32,6 +32,7 @@ const Content = () => {
       <Routes>
         <Route index path="/" element={<Homepage />} />
         <Route index path="/about" element={<About />} />
+        <Route index path="/contact" element={<Contact />} />
       </Routes>
     </Container>
   );
