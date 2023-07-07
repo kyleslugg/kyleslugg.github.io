@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 import './styles/index.scss';
+//import 'latex.css';
 
 import CssBaseline from '@mui/material/CssBaseline';
 
@@ -12,11 +13,11 @@ import Content from './content.tsx';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider theme={KSUTheme}>
-        <CssBaseline />
+    <ThemeProvider theme={KSUTheme}>
+      <CssBaseline />
+      <BrowserRouter>
         <Content />
-      </ThemeProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>
 );

@@ -2,15 +2,9 @@ import Card from '@mui/material/Card';
 
 export default function About() {
   return (
-    <Card
-      sx={{
-        boxShadow: 'none',
-        //backgroundColor: '#93B2DE',
-        fontSize: '0.8rem',
-        fontFamily: 'Arial'
-      }}
-    >
+    <Card sx={{ fontFamily: 'Arial' }}>
       <div className="card">
+        <h2>🏗 CAUTION: Under Construction 🏗</h2>
         <h3>Welcome! I'm Kyle Slugg-Urbino.</h3>
         <p>
           I blend policy analysis and data science to figure out how urban

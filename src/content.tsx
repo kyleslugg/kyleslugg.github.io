@@ -4,6 +4,8 @@ import Header from './components/header.tsx';
 import About from './pages/About.tsx';
 import Contact from './pages/Contact.tsx';
 import { Routes, Route } from 'react-router-dom';
+import Footer from './components/footer.tsx';
+import Work from './pages/Work.tsx';
 
 const sections = [
   { title: 'Home', url: '/' },
@@ -23,7 +25,9 @@ export default function Content() {
         <Route index path="/" element={<Homepage />} />
         <Route index path="/about" element={<About />} />
         <Route index path="/contact" element={<Contact />} />
+        <Route index path="/work" element={<Work />} />
       </Routes>
+      <Footer />
     </Container>
   );
 }
