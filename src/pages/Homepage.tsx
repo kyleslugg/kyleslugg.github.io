@@ -1,14 +1,15 @@
 import Card from '@mui/material/Card';
+import ImageGrid from '../components/homepageImageGrid';
 import '../styles/App.scss';
 
 function Homepage() {
   return (
     <Card
       sx={{
-        boxShadow: 'none',
         //backgroundColor: '#93B2DE',
-        fontSize: '0.8rem',
-        fontFamily: 'Arial'
+        fontSize: '1rem',
+        fontFamily: 'Arial',
+        paddingTop: '0px'
       }}
     >
       {/* import('../assets/markdown/HomepageIntro.md').then((res) => {
@@ -20,7 +21,7 @@ function Homepage() {
         {/* <Markdown className="markdown" key={'a'}>
           {pageContent}
         </Markdown> */}
-        <h1>🏗🏗🏗 UNDER ACTIVE CONSTRUCTION -- MORE COMING SOON! 🏗🏗🏗</h1>
+        {/* <h1>🏗🏗🏗 UNDER ACTIVE CONSTRUCTION -- MORE COMING SOON! 🏗🏗🏗</h1> */}
         <p>
           Welcome! I'm Kyle Slugg-Urbino. I build apps (mostly in React.js +
           Typescript on the frontend and Node.js or Python on the back) and
@@ -29,7 +30,7 @@ function Homepage() {
           tools to make the abstract and complex systems they live within
           visible -- and, so, accessible to challenge.
         </p>{' '}
-        [HOLD FOR IMAGE COLLAGE]{' '}
+        <ImageGrid />
         <p>
           To learn more about me and my background, please visit my
           <a href="/about"> about </a>

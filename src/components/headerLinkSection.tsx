@@ -9,14 +9,14 @@ const HeaderLinkSection = (props: HLProps) => {
   const { sections } = props;
 
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+    <div>
       {sections.map((section) => (
         <MuiLink
           color="inherit"
           key={section.title}
-          variant="body2"
+          variant="h5"
           href={section.url}
-          sx={{ p: 1, flexShrink: 0 }}
+          sx={{ p: 1 }}
         >
           <Link to={section.url}>{section.title}</Link>
         </MuiLink>

@@ -16,18 +16,28 @@ export default function Header(props: HeaderProps) {
 
   return (
     <Card>
-      <Toolbar>
+      <Toolbar
+        className="headerSection"
+        sx={{ padding: '0px', alignContent: 'center' }}
+      >
         <Typography
-          component="h2"
-          variant="h5"
+          variant="h4"
           color="inherit"
-          align="left"
-          sx={{ fontWeight: 600, flex: 1, margin: '0px', padding: '0px' }}
+          sx={{
+            fontWeight: 600,
+            margin: '0px',
+            padding: '0px',
+            alignContent: 'center'
+          }}
         >
           {title}
         </Typography>
       </Toolbar>
-      <Toolbar>
+      <Toolbar
+        className="headerSection"
+        id="headerLinks"
+        sx={{ borderBottom: '.5pt solid #222222' }}
+      >
         <HeaderLinkSection sections={sections} />
       </Toolbar>
     </Card>

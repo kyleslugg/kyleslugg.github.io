@@ -8,8 +8,11 @@ export const KSUTheme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          margin: '0, auto',
-          boxShadow: 'none'
+          margin: '10px',
+          paddingTop: '20px',
+          boxShadow: 'none',
+          //boxShadow: '0px 1px 3px 3px rgba(0, 0, 0, 0.1)'
+          borderRadius: '0px'
         }
       }
     },
