@@ -1,5 +1,4 @@
 import React from 'react';
-import Container from '@mui/material/Container';
 import '../styles/imageGrid.scss';
 
 export default function ImageGrid() {
