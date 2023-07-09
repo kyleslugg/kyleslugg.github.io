@@ -18,7 +18,7 @@ export default function Footer() {
     },
     {
       icon: spotifyIcon,
-      name: 'SO me-coded',
+      name: 'me-coded',
       url: 'https://open.spotify.com/playlist/3XE1EI1TpQNTJjzD3iD4Fe?si=9840cb47847e4efd'
     }
   ];
