@@ -1,4 +1,4 @@
-import { Card, Container, Grid } from '@mui/material';
+import { Card, Grid } from '@mui/material';
 import PostLede, { BlurbInfo } from '../components/postLede';
 import blurbs from '../assets/markdown/posts/blurbs.json';
 import '../styles/Posts.scss';

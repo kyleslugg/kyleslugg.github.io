@@ -10,7 +10,7 @@ export default function PostLede(props: {
   data: BlurbInfo;
   photoDirectory: string;
 }) {
-  const { date, title, imgSrc, blurbText, fulltextUri } = props.data;
+  const { title, imgSrc, blurbText, fulltextUri } = props.data;
   const { photoDirectory } = props;
 
   return (
