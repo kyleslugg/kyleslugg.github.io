@@ -1,0 +1,967 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Kyle Slugg - NYCHA Waste Asset Maps</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+
+	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:url" content="" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:description" content="" />
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="../css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="../css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="../css/flexslider.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="../js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+
+</head>
+<style type="text/css">
+    pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: var(--jp-cell-editor-active-background) }
+.highlight { background: var(--jp-cell-editor-background); color: var(--jp-mirror-editor-variable-color) }
+.highlight .c { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment */
+.highlight .err { color: var(--jp-mirror-editor-error-color) } /* Error */
+.highlight .k { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword */
+.highlight .o { color: var(--jp-mirror-editor-operator-color); font-weight: bold } /* Operator */
+.highlight .p { color: var(--jp-mirror-editor-punctuation-color) } /* Punctuation */
+.highlight .ch { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Preproc */
+.highlight .cpf { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Single */
+.highlight .cs { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment.Special */
+.highlight .kc { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: var(--jp-mirror-editor-keyword-color); font-weight: bold } /* Keyword.Type */
+.highlight .m { color: var(--jp-mirror-editor-number-color) } /* Literal.Number */
+.highlight .s { color: var(--jp-mirror-editor-string-color) } /* Literal.String */
+.highlight .ow { color: var(--jp-mirror-editor-operator-color); font-weight: bold } /* Operator.Word */
+.highlight .w { color: var(--jp-mirror-editor-variable-color) } /* Text.Whitespace */
+.highlight .mb { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Bin */
+.highlight .mf { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Float */
+.highlight .mh { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Hex */
+.highlight .mi { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Integer */
+.highlight .mo { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Oct */
+.highlight .sa { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Affix */
+.highlight .sb { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Backtick */
+.highlight .sc { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Char */
+.highlight .dl { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Delimiter */
+.highlight .sd { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Doc */
+.highlight .s2 { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Double */
+.highlight .se { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Escape */
+.highlight .sh { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Heredoc */
+.highlight .si { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Interpol */
+.highlight .sx { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Other */
+.highlight .sr { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Regex */
+.highlight .s1 { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Single */
+.highlight .ss { color: var(--jp-mirror-editor-string-color) } /* Literal.String.Symbol */
+.highlight .il { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Integer.Long */
+  </style>
+<style type="text/css">
+	/*-----------------------------------------------------------------------------
+	| Copyright (c) Jupyter Development Team.
+	| Distributed under the terms of the Modified BSD License.
+	|----------------------------------------------------------------------------*/
+	
+	/*
+	The following CSS variables define the main, public API for styling JupyterLab.
+	These variables should be used by all plugins wherever possible. In other
+	words, plugins should not define custom colors, sizes, etc unless absolutely
+	necessary. This enables users to change the visual theme of JupyterLab
+	by changing these variables.
+	
+	Many variables appear in an ordered sequence (0,1,2,3). These sequences
+	are designed to work well together, so for example, `--jp-border-color1` should
+	be used with `--jp-layout-color1`. The numbers have the following meanings:
+	
+	* 0: super-primary, reserved for special emphasis
+	* 1: primary, most important under normal situations
+	* 2: secondary, next most important under normal situations
+	* 3: tertiary, next most important under normal situations
+	
+	Throughout JupyterLab, we are mostly following principles from Google's
+	Material Design when selecting colors. We are not, however, following
+	all of MD as it is not optimized for dense, information rich UIs.
+	*/
+	
+	:root {
+	  /* Elevation
+	   *
+	   * We style box-shadows using Material Design's idea of elevation. These particular numbers are taken from here:
+	   *
+	   * https://github.com/material-components/material-components-web
+	   * https://material-components-web.appspot.com/elevation.html
+	   */
+	
+	  --jp-shadow-base-lightness: 0;
+	  --jp-shadow-umbra-color: rgba(
+		var(--jp-shadow-base-lightness),
+		var(--jp-shadow-base-lightness),
+		var(--jp-shadow-base-lightness),
+		0.2
+	  );
+	  --jp-shadow-penumbra-color: rgba(
+		var(--jp-shadow-base-lightness),
+		var(--jp-shadow-base-lightness),
+		var(--jp-shadow-base-lightness),
+		0.14
+	  );
+	  --jp-shadow-ambient-color: rgba(
+		var(--jp-shadow-base-lightness),
+		var(--jp-shadow-base-lightness),
+		var(--jp-shadow-base-lightness),
+		0.12
+	  );
+	  --jp-elevation-z0: none;
+	  --jp-elevation-z1: 0px 2px 1px -1px var(--jp-shadow-umbra-color),
+		0px 1px 1px 0px var(--jp-shadow-penumbra-color),
+		0px 1px 3px 0px var(--jp-shadow-ambient-color);
+	  --jp-elevation-z2: 0px 3px 1px -2px var(--jp-shadow-umbra-color),
+		0px 2px 2px 0px var(--jp-shadow-penumbra-color),
+		0px 1px 5px 0px var(--jp-shadow-ambient-color);
+	  --jp-elevation-z4: 0px 2px 4px -1px var(--jp-shadow-umbra-color),
+		0px 4px 5px 0px var(--jp-shadow-penumbra-color),
+		0px 1px 10px 0px var(--jp-shadow-ambient-color);
+	  --jp-elevation-z6: 0px 3px 5px -1px var(--jp-shadow-umbra-color),
+		0px 6px 10px 0px var(--jp-shadow-penumbra-color),
+		0px 1px 18px 0px var(--jp-shadow-ambient-color);
+	  --jp-elevation-z8: 0px 5px 5px -3px var(--jp-shadow-umbra-color),
+		0px 8px 10px 1px var(--jp-shadow-penumbra-color),
+		0px 3px 14px 2px var(--jp-shadow-ambient-color);
+	  --jp-elevation-z12: 0px 7px 8px -4px var(--jp-shadow-umbra-color),
+		0px 12px 17px 2px var(--jp-shadow-penumbra-color),
+		0px 5px 22px 4px var(--jp-shadow-ambient-color);
+	  --jp-elevation-z16: 0px 8px 10px -5px var(--jp-shadow-umbra-color),
+		0px 16px 24px 2px var(--jp-shadow-penumbra-color),
+		0px 6px 30px 5px var(--jp-shadow-ambient-color);
+	  --jp-elevation-z20: 0px 10px 13px -6px var(--jp-shadow-umbra-color),
+		0px 20px 31px 3px var(--jp-shadow-penumbra-color),
+		0px 8px 38px 7px var(--jp-shadow-ambient-color);
+	  --jp-elevation-z24: 0px 11px 15px -7px var(--jp-shadow-umbra-color),
+		0px 24px 38px 3px var(--jp-shadow-penumbra-color),
+		0px 9px 46px 8px var(--jp-shadow-ambient-color);
+	
+	  /* Borders
+	   *
+	   * The following variables, specify the visual styling of borders in JupyterLab.
+	   */
+	
+	  --jp-border-width: 1px;
+	  --jp-border-color0: var(--md-grey-400);
+	  --jp-border-color1: var(--md-grey-400);
+	  --jp-border-color2: var(--md-grey-300);
+	  --jp-border-color3: var(--md-grey-200);
+	  --jp-border-radius: 2px;
+	
+	  /* UI Fonts
+	   *
+	   * The UI font CSS variables are used for the typography all of the JupyterLab
+	   * user interface elements that are not directly user generated content.
+	   *
+	   * The font sizing here is done assuming that the body font size of --jp-ui-font-size1
+	   * is applied to a parent element. When children elements, such as headings, are sized
+	   * in em all things will be computed relative to that body size.
+	   */
+	
+	  --jp-ui-font-scale-factor: 1.2;
+	  --jp-ui-font-size0: 0.83333em;
+	  --jp-ui-font-size1: 13px; /* Base font size */
+	  --jp-ui-font-size2: 1.2em;
+	  --jp-ui-font-size3: 1.44em;
+	
+	  --jp-ui-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+		Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	
+	  /*
+	   * Use these font colors against the corresponding main layout colors.
+	   * In a light theme, these go from dark to light.
+	   */
+	
+	  /* Defaults use Material Design specification */
+	  --jp-ui-font-color0: rgba(0, 0, 0, 1);
+	  --jp-ui-font-color1: rgba(0, 0, 0, 0.87);
+	  --jp-ui-font-color2: rgba(0, 0, 0, 0.54);
+	  --jp-ui-font-color3: rgba(0, 0, 0, 0.38);
+	
+	  /*
+	   * Use these against the brand/accent/warn/error colors.
+	   * These will typically go from light to darker, in both a dark and light theme.
+	   */
+	
+	  --jp-ui-inverse-font-color0: rgba(255, 255, 255, 1);
+	  --jp-ui-inverse-font-color1: rgba(255, 255, 255, 1);
+	  --jp-ui-inverse-font-color2: rgba(255, 255, 255, 0.7);
+	  --jp-ui-inverse-font-color3: rgba(255, 255, 255, 0.5);
+	
+	  /* Content Fonts
+	   *
+	   * Content font variables are used for typography of user generated content.
+	   *
+	   * The font sizing here is done assuming that the body font size of --jp-content-font-size1
+	   * is applied to a parent element. When children elements, such as headings, are sized
+	   * in em all things will be computed relative to that body size.
+	   */
+	
+	  --jp-content-line-height: 1.6;
+	  --jp-content-font-scale-factor: 1.2;
+	  --jp-content-font-size0: 0.83333em;
+	  --jp-content-font-size1: 14px; /* Base font size */
+	  --jp-content-font-size2: 1.2em;
+	  --jp-content-font-size3: 1.44em;
+	  --jp-content-font-size4: 1.728em;
+	  --jp-content-font-size5: 2.0736em;
+	
+	  /* This gives a magnification of about 125% in presentation mode over normal. */
+	  --jp-content-presentation-font-size1: 17px;
+	
+	  --jp-content-heading-line-height: 1;
+	  --jp-content-heading-margin-top: 1.2em;
+	  --jp-content-heading-margin-bottom: 0.8em;
+	  --jp-content-heading-font-weight: 500;
+	
+	  /* Defaults use Material Design specification */
+	  --jp-content-font-color0: rgba(0, 0, 0, 1);
+	  --jp-content-font-color1: rgba(0, 0, 0, 0.87);
+	  --jp-content-font-color2: rgba(0, 0, 0, 0.54);
+	  --jp-content-font-color3: rgba(0, 0, 0, 0.38);
+	
+	  --jp-content-link-color: var(--md-blue-700);
+	
+	  --jp-content-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+		Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+		'Segoe UI Symbol';
+	
+	  /*
+	   * Code Fonts
+	   *
+	   * Code font variables are used for typography of code and other monospaces content.
+	   */
+	
+	  --jp-code-font-size: 13px;
+	  --jp-code-line-height: 1.3077; /* 17px for 13px base */
+	  --jp-code-padding: 5px; /* 5px for 13px base, codemirror highlighting needs integer px value */
+	  --jp-code-font-family-default: Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+	  --jp-code-font-family: var(--jp-code-font-family-default);
+	
+	  /* This gives a magnification of about 125% in presentation mode over normal. */
+	  --jp-code-presentation-font-size: 16px;
+	
+	  /* may need to tweak cursor width if you change font size */
+	  --jp-code-cursor-width0: 1.4px;
+	  --jp-code-cursor-width1: 2px;
+	  --jp-code-cursor-width2: 4px;
+	
+	  /* Layout
+	   *
+	   * The following are the main layout colors use in JupyterLab. In a light
+	   * theme these would go from light to dark.
+	   */
+	
+	  --jp-layout-color0: white;
+	  --jp-layout-color1: white;
+	  --jp-layout-color2: var(--md-grey-200);
+	  --jp-layout-color3: var(--md-grey-400);
+	  --jp-layout-color4: var(--md-grey-600);
+	
+	  /* Inverse Layout
+	   *
+	   * The following are the inverse layout colors use in JupyterLab. In a light
+	   * theme these would go from dark to light.
+	   */
+	
+	  --jp-inverse-layout-color0: #111111;
+	  --jp-inverse-layout-color1: var(--md-grey-900);
+	  --jp-inverse-layout-color2: var(--md-grey-800);
+	  --jp-inverse-layout-color3: var(--md-grey-700);
+	  --jp-inverse-layout-color4: var(--md-grey-600);
+	
+	  /* Brand/accent */
+	
+	  --jp-brand-color0: var(--md-blue-700);
+	  --jp-brand-color1: var(--md-blue-500);
+	  --jp-brand-color2: var(--md-blue-300);
+	  --jp-brand-color3: var(--md-blue-100);
+	  --jp-brand-color4: var(--md-blue-50);
+	
+	  --jp-accent-color0: var(--md-green-700);
+	  --jp-accent-color1: var(--md-green-500);
+	  --jp-accent-color2: var(--md-green-300);
+	  --jp-accent-color3: var(--md-green-100);
+	
+	  /* State colors (warn, error, success, info) */
+	
+	  --jp-warn-color0: var(--md-orange-700);
+	  --jp-warn-color1: var(--md-orange-500);
+	  --jp-warn-color2: var(--md-orange-300);
+	  --jp-warn-color3: var(--md-orange-100);
+	
+	  --jp-error-color0: var(--md-red-700);
+	  --jp-error-color1: var(--md-red-500);
+	  --jp-error-color2: var(--md-red-300);
+	  --jp-error-color3: var(--md-red-100);
+	
+	  --jp-success-color0: var(--md-green-700);
+	  --jp-success-color1: var(--md-green-500);
+	  --jp-success-color2: var(--md-green-300);
+	  --jp-success-color3: var(--md-green-100);
+	
+	  --jp-info-color0: var(--md-cyan-700);
+	  --jp-info-color1: var(--md-cyan-500);
+	  --jp-info-color2: var(--md-cyan-300);
+	  --jp-info-color3: var(--md-cyan-100);
+	
+	  /* Cell specific styles */
+	
+	  --jp-cell-padding: 5px;
+	
+	  --jp-cell-collapser-width: 8px;
+	  --jp-cell-collapser-min-height: 20px;
+	  --jp-cell-collapser-not-active-hover-opacity: 0.6;
+	
+	  --jp-cell-editor-background: var(--md-grey-100);
+	  --jp-cell-editor-border-color: var(--md-grey-300);
+	  --jp-cell-editor-box-shadow: inset 0 0 2px var(--md-blue-300);
+	  --jp-cell-editor-active-background: var(--jp-layout-color0);
+	  --jp-cell-editor-active-border-color: var(--jp-brand-color1);
+	
+	  --jp-cell-prompt-width: 64px;
+	  --jp-cell-prompt-font-family: var(--jp-code-font-family-default);
+	  --jp-cell-prompt-letter-spacing: 0px;
+	  --jp-cell-prompt-opacity: 1;
+	  --jp-cell-prompt-not-active-opacity: 0.5;
+	  --jp-cell-prompt-not-active-font-color: var(--md-grey-700);
+	  /* A custom blend of MD grey and blue 600
+	   * See https://meyerweb.com/eric/tools/color-blend/#546E7A:1E88E5:5:hex */
+	  --jp-cell-inprompt-font-color: #307fc1;
+	  /* A custom blend of MD grey and orange 600
+	   * https://meyerweb.com/eric/tools/color-blend/#546E7A:F4511E:5:hex */
+	  --jp-cell-outprompt-font-color: #bf5b3d;
+	
+	  /* Notebook specific styles */
+	
+	  --jp-notebook-padding: 10px;
+	  --jp-notebook-select-background: var(--jp-layout-color1);
+	  --jp-notebook-multiselected-color: var(--md-blue-50);
+	
+	  /* The scroll padding is calculated to fill enough space at the bottom of the
+	  notebook to show one single-line cell (with appropriate padding) at the top
+	  when the notebook is scrolled all the way to the bottom. We also subtract one
+	  pixel so that no scrollbar appears if we have just one single-line cell in the
+	  notebook. This padding is to enable a 'scroll past end' feature in a notebook.
+	  */
+	  --jp-notebook-scroll-padding: calc(
+		100% - var(--jp-code-font-size) * var(--jp-code-line-height) -
+		  var(--jp-code-padding) - var(--jp-cell-padding) - 1px
+	  );
+	
+	  /* Rendermime styles */
+	
+	  --jp-rendermime-error-background: #fdd;
+	  --jp-rendermime-table-row-background: var(--md-grey-100);
+	  --jp-rendermime-table-row-hover-background: var(--md-light-blue-50);
+	
+	  /* Dialog specific styles */
+	
+	  --jp-dialog-background: rgba(0, 0, 0, 0.25);
+	
+	  /* Console specific styles */
+	
+	  --jp-console-padding: 10px;
+	
+	  /* Toolbar specific styles */
+	
+	  --jp-toolbar-border-color: var(--jp-border-color1);
+	  --jp-toolbar-micro-height: 8px;
+	  --jp-toolbar-background: var(--jp-layout-color1);
+	  --jp-toolbar-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.24);
+	  --jp-toolbar-header-margin: 4px 4px 0px 4px;
+	  --jp-toolbar-active-background: var(--md-grey-300);
+	
+	  /* Input field styles */
+	
+	  --jp-input-box-shadow: inset 0 0 2px var(--md-blue-300);
+	  --jp-input-active-background: var(--jp-layout-color1);
+	  --jp-input-hover-background: var(--jp-layout-color1);
+	  --jp-input-background: var(--md-grey-100);
+	  --jp-input-border-color: var(--jp-border-color1);
+	  --jp-input-active-border-color: var(--jp-brand-color1);
+	  --jp-input-active-box-shadow-color: rgba(19, 124, 189, 0.3);
+	
+	  /* General editor styles */
+	
+	  --jp-editor-selected-background: #d9d9d9;
+	  --jp-editor-selected-focused-background: #d7d4f0;
+	  --jp-editor-cursor-color: var(--jp-ui-font-color0);
+	
+	  /* Code mirror specific styles */
+	
+	  --jp-mirror-editor-keyword-color: #008000;
+	  --jp-mirror-editor-atom-color: #88f;
+	  --jp-mirror-editor-number-color: #080;
+	  --jp-mirror-editor-def-color: #00f;
+	  --jp-mirror-editor-variable-color: var(--md-grey-900);
+	  --jp-mirror-editor-variable-2-color: #05a;
+	  --jp-mirror-editor-variable-3-color: #085;
+	  --jp-mirror-editor-punctuation-color: #05a;
+	  --jp-mirror-editor-property-color: #05a;
+	  --jp-mirror-editor-operator-color: #aa22ff;
+	  --jp-mirror-editor-comment-color: #408080;
+	  --jp-mirror-editor-string-color: #ba2121;
+	  --jp-mirror-editor-string-2-color: #708;
+	  --jp-mirror-editor-meta-color: #aa22ff;
+	  --jp-mirror-editor-qualifier-color: #555;
+	  --jp-mirror-editor-builtin-color: #008000;
+	  --jp-mirror-editor-bracket-color: #997;
+	  --jp-mirror-editor-tag-color: #170;
+	  --jp-mirror-editor-attribute-color: #00c;
+	  --jp-mirror-editor-header-color: blue;
+	  --jp-mirror-editor-quote-color: #090;
+	  --jp-mirror-editor-link-color: #00c;
+	  --jp-mirror-editor-error-color: #f00;
+	  --jp-mirror-editor-hr-color: #999;
+	
+	  /* Vega extension styles */
+	
+	  --jp-vega-background: white;
+	
+	  /* Sidebar-related styles */
+	
+	  --jp-sidebar-min-width: 250px;
+	
+	  /* Search-related styles */
+	
+	  --jp-search-toggle-off-opacity: 0.5;
+	  --jp-search-toggle-hover-opacity: 0.8;
+	  --jp-search-toggle-on-opacity: 1;
+	  --jp-search-selected-match-background-color: rgb(245, 200, 0);
+	  --jp-search-selected-match-color: black;
+	  --jp-search-unselected-match-background-color: var(
+		--jp-inverse-layout-color0
+	  );
+	  --jp-search-unselected-match-color: var(--jp-ui-inverse-font-color0);
+	
+	  /* Icon colors that work well with light or dark backgrounds */
+	  --jp-icon-contrast-color0: var(--md-purple-600);
+	  --jp-icon-contrast-color1: var(--md-green-600);
+	  --jp-icon-contrast-color2: var(--md-pink-600);
+	  --jp-icon-contrast-color3: var(--md-blue-600);
+	}
+	</style>
+	
+	<style type="text/css">
+	a.anchor-link {
+	   display: none;
+	}
+	.highlight  {
+		margin: 0.4em;
+	}
+	
+	/* Input area styling */
+	.jp-InputArea {
+		overflow: hidden;
+	}
+	
+	.jp-InputArea-editor {
+		overflow: hidden;
+	}
+	
+	@media print {
+	  body {
+		margin: 0;
+	  }
+	}
+	</style>
+<body>
+	<div id="colorlib-page">
+		<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
+			<div id='colorlib-logo'><a href="../index.html"><img src='../images/logo.png'
+						style="width: 70px; height:auto; text-align: right;"></a></div>
+			<nav id="colorlib-main-menu" role="navigation">
+				<ul>
+					<li class="colorlib-active"><a href="../index.html">Home</a></li>
+					<li><a href="../index.html#recent-work">Work</a></li>
+					<li><a href="../content/Slugg_Kyle_Resume.pdf" target="_blank">Resume</a></li>
+					<li><a href="mailto:kyle@kyleslugg.com">Contact</a></li>
+				</ul>
+			</nav>
+
+			<div class="colorlib-footer">
+				<ul>
+					<li><a href="https://www.linkedin.com/in/kyle-slugg/"><i class="icon-linkedin2"></i></a></li>
+					<li><a href="https://www.linkedin.com/in/kyle-slugg/"><i class="icon-github"></i></a></li>
+					<li><a href="https://twitter.com/kyleslugg"><i class="icon-twitter2"></i></a></li>
+					<li><a href="https://www.instagram.com/kyleslugg/"><i class="icon-instagram"></i></a></li>
+
+				</ul>
+				<p style="color: aliceblue; font-size: 0px;">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					Copyright &copy;<script>
+						document.write(new Date().getFullYear());
+					</script> All rights reserved | This template is made with <i class="icon-heart"
+						aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </span>
+				</p>
+			</div>
+
+		</aside>
+
+		<div id="colorlib-main">
+
+			<div class="colorlib-work">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3">
+							<span class="heading-meta">Portfolio</span>
+							<h2 class="colorlib-heading animate-box" data-animate-effect="fadeInLeft">Mapping Waste Assets at NYCHA Developments using QGIS Python Scripting Capabilities</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-8 image-content">
+							<img class="img-responsive"
+							src="../images/082_asset_map.png" alt="Sumner
+							Consolidation, Asset Map">
+						</div>
+						<div class="col-md-4 sticky-parent">
+							<div>
+								<div class="project-desc">
+									<p>In the summer and fall of 2020, NYCHA's
+									Strategic Planning Department worked to
+									created Individualized Waste Management
+									Action Plans (IWMAPs) for each of the
+									Authority's 130+ "consolidations" (that is,
+									a development or group of developments
+									overseen by a single property management
+									office). I was charged with several tasks,
+									including, creating a map of waste assets
+									at each consolidation for inclusion in the
+									Action Plans. </p>
+									</ul>
+									<p>This document describes the process of
+									creating those maps. Other work on the
+									IWMAPs is presented on separate pages, or
+									is in preparation. </p>
+
+									<p class="icon">
+									</p>
+									<p>
+										
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class=row>
+							<div class="col-lg-11">
+							<h3></ul>Tools and Methods</h3>
+							<p>Due to restrictions on technology access
+							associated with remote work (this was, after all,
+							summer/fall 2020), all maps included in the reports
+							were created using the open-source software QGIS.
+							Fortunately, this was at the time (and remains) my
+							preferred GIS software platform for its
+							extensibility and versatility.</p>
+							</ul>
+							<p>This project made particularly heavy use of
+							QGIS' Python scripting capabilities. In fact,
+							aside from basic layers-management tasks, all
+							relevant work was completed using Python
+							scripting.</p>
+							</ul>
+							<p>The script used is displayed below. </p>
+
+							<div class="jp-Cell-inputWrapper">
+								<div class="jp-InputArea jp-Cell-inputArea">
+								<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+									 <div class="CodeMirror cm-s-jupyter">
+								<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Imports -- key QGIS modules as well as systems modules</span>
+<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">qgis.gui</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">qgis.utils</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">path</span>
+<span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1">#Identify key layers in project</span>
+<span class="n">DEVS_LAYER_ID</span> <span class="o">=</span> <span class="s1">&#39;NYCHA_Developments_b67e848b_1fce_439f_a808_806bac98ee07&#39;</span>
+<span class="n">BUILDINGS_LAYER_ID</span> <span class="o">=</span> <span class="s1">&#39;NYCHA_Buildings_cc15e63a_3f81_480c_b206_6b95bc37b83f&#39;</span>
+<span class="n">ASSETS_LAYER_ID</span> <span class="o">=</span> <span class="s1">&#39;Waste_Assets_1_5e60bec7_5309_46dd_8721_d94575f3629c&#39;</span>
+<span class="n">BASEMAP_ID</span> <span class="o">=</span> <span class="s1">&#39;Skobbler_3fb61fc5_38bc_464d_90b4_e4ad3b579c82&#39;</span>
+<span class="n">RECYCLING_BINS_LAYER_ID</span> <span class="o">=</span> <span class="s1">&#39;OUTPUT_65d16aa4_b789_491c_a639_9c73c3f3dd87&#39;</span>
+<span class="n">ENTRANCES_LAYER_ID</span> <span class="o">=</span> <span class="s1">&#39;Building_Entrances_27a1364c_03ab_47ac_9e78_11799a19994a&#39;</span>
+
+<span class="c1">#Create spatial indices on relevant layers to improve performance</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:createspatialindex&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/Waste_Assets/Waste_Assets_with_CID.shp|layername=Waste_Assets_with_CID&#39;</span><span class="p">})</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:createspatialindex&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="s1">&#39;dbname=</span><span class="se">\&#39;</span><span class="s1">FoodAccess</span><span class="se">\&#39;</span><span class="s1"> port=5432 sslmode=disable key=</span><span class="se">\&#39;</span><span class="s1">id</span><span class="se">\&#39;</span><span class="s1"> srid=2263 type=MultiPolygon checkPrimaryKeyUnicity=</span><span class="se">\&#39;</span><span class="s1">0</span><span class="se">\&#39;</span><span class="s1"> table=</span><span class="se">\&quot;</span><span class="s1">NYCHA_Waste</span><span class="se">\&quot;</span><span class="s1">.</span><span class="se">\&quot;</span><span class="s1">NYCHA_Developments</span><span class="se">\&quot;</span><span class="s1"> (geom)&#39;</span><span class="p">})</span>
+<span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:createspatialindex&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="s1">&#39;dbname=</span><span class="se">\&#39;</span><span class="s1">FoodAccess</span><span class="se">\&#39;</span><span class="s1"> port=5432 sslmode=disable key=</span><span class="se">\&#39;</span><span class="s1">id</span><span class="se">\&#39;</span><span class="s1"> srid=2263 type=MultiPolygon checkPrimaryKeyUnicity=</span><span class="se">\&#39;</span><span class="s1">0</span><span class="se">\&#39;</span><span class="s1"> table=</span><span class="se">\&quot;</span><span class="s1">NYCHA_Waste</span><span class="se">\&quot;</span><span class="s1">.</span><span class="se">\&quot;</span><span class="s1">NYCHA_Buildings</span><span class="se">\&quot;</span><span class="s1"> (geom)&#39;</span><span class="p">})</span>
+
+<span class="k">def</span> <span class="nf">get_consolidations</span><span class="p">(</span><span class="n">dev_layer_id</span><span class="p">,</span> <span class="n">cons_tds_att</span><span class="p">,</span> <span class="n">cons_name_att</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;Using a layer of NYCHA developments and two field names representing the name and TDS number</span>
+<span class="sd">       (unique numerical identifier) and name of a NYCHA consolidation (development or group of</span>
+<span class="sd">        developments overseen by a single management office), returns a dictionary of unique</span>
+<span class="sd">       consolidation numbers and names.</span>
+<span class="sd">       </span>
+<span class="sd">       Params:</span>
+<span class="sd">       dev_layer_id (str): name of development layer</span>
+<span class="sd">       cons_tds_att (str): name of field containing consolidation TDS numbers</span>
+<span class="sd">       cons_name_att (str): name of field containing consolidation name attribute</span>
+<span class="sd">       </span>
+<span class="sd">       Returns:</span>
+<span class="sd">       dict: dictionary mapping TDS numbers to consolidation names&#39;&#39;&#39;</span>
+	<span class="n">layers</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span>
+	<span class="n">dev_layer</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[</span><span class="n">dev_layer_id</span><span class="p">]</span>
+	<span class="n">features</span> <span class="o">=</span> <span class="n">dev_layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">()</span>
+	
+	<span class="n">consolidations</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+	
+	<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">feature</span><span class="p">[</span><span class="n">cons_tds_att</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">consolidations</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+			<span class="n">consolidations</span><span class="p">[</span><span class="n">feature</span><span class="p">[</span><span class="n">cons_tds_att</span><span class="p">]]</span> <span class="o">=</span> <span class="n">feature</span><span class="p">[</span><span class="n">cons_name_att</span><span class="p">]</span>
+	
+	<span class="k">return</span> <span class="n">consolidations</span>
+	
+
+
+<span class="k">def</span> <span class="nf">get_consolidation_buildings</span><span class="p">(</span><span class="n">buildings_layer_id</span><span class="p">,</span> <span class="n">cons_tds</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;Extract buildings associated with a particular NYCHA consolidation into a new layer.</span>
+<span class="sd">       </span>
+<span class="sd">       Params:</span>
+<span class="sd">       buildings_layer_id (str): name of buildings layer</span>
+<span class="sd">       cons_tds (str): three-character TDS number (e.g., &#39;005&#39; or &#39;505&#39;) associated with the </span>
+<span class="sd">                       relevant consolidation</span>
+<span class="sd">       </span>
+<span class="sd">       Returns:</span>
+<span class="sd">       QgsVectorLayer: new layer containing buildings associated with the relevant consolidation&#39;&#39;&#39;</span>
+	
+	<span class="n">layers</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span>
+	<span class="n">layer</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[</span><span class="n">buildings_layer_id</span><span class="p">]</span>
+	
+	<span class="c1">#layer.selectByExpression(f&#39;&#39;&#39;&quot;cons_tds&quot;= &#39;{cons_tds}&#39; &#39;&#39;&#39;, QgsVectorLayer.SetSelection)</span>
+	
+	<span class="n">cons_buildings</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:extractbyexpression&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="n">layer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span><span class="o">.</span><span class="n">dataSourceUri</span><span class="p">(),</span>
+	<span class="s1">&#39;EXPRESSION&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39; &quot;cons_tds&quot; = &#39;</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">&#39; &#39;&#39;&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/Consolidations/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_buildings.shp&#39;</span><span class="p">})[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">]</span>
+	
+	<span class="n">new_layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">cons_buildings</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_buildings&#39;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+	
+	<span class="k">return</span> <span class="n">new_layer</span>
+
+<span class="k">def</span> <span class="nf">get_consolidation_entrances</span><span class="p">(</span><span class="n">entrances_layer_id</span><span class="p">,</span> <span class="n">cons_tds</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;Extract building entrances/addresses associated with a particular NYCHA consolidation </span>
+<span class="sd">        into a new layer.</span>
+<span class="sd">       </span>
+<span class="sd">       Params:</span>
+<span class="sd">       entrances_layer_id (str): name of building entrance layer</span>
+<span class="sd">       cons_tds (str): three-character TDS number (e.g., &#39;005&#39; or &#39;505&#39;) associated with the </span>
+<span class="sd">                       relevant consolidation</span>
+<span class="sd">       </span>
+<span class="sd">       Returns:</span>
+<span class="sd">       QgsVectorLayer: new layer containing building entrances/address points associated with </span>
+<span class="sd">                       the relevant consolidation&#39;&#39;&#39;</span>
+	
+	<span class="n">layers</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span>
+	<span class="n">layer</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[</span><span class="n">entrances_layer_id</span><span class="p">]</span>
+	
+	<span class="c1">#layer.selectByExpression(f&#39;&#39;&#39;&quot;cons_tds&quot;= &#39;{cons_tds}&#39; &#39;&#39;&#39;, QgsVectorLayer.SetSelection)</span>
+	
+	<span class="n">cons_entrances</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:extractbyexpression&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="n">layer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span><span class="o">.</span><span class="n">dataSourceUri</span><span class="p">(),</span>
+	<span class="s1">&#39;EXPRESSION&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39; &quot;cons_tds&quot; = &#39;</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">&#39; &#39;&#39;&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/Consolidations/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_entrances.shp&#39;</span><span class="p">})[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">]</span>
+	
+	<span class="n">new_layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">cons_entrances</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_entrances&#39;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+	
+	<span class="k">return</span> <span class="n">new_layer</span>
+
+<span class="k">def</span> <span class="nf">get_consolidation_developments</span><span class="p">(</span><span class="n">dev_layer_id</span><span class="p">,</span> <span class="n">cons_tds</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;Extract developments associated with a particular NYCHA consolidation into a new layer.</span>
+<span class="sd">       </span>
+<span class="sd">       Params:</span>
+<span class="sd">       dev_layer_id (str): name of developments layer</span>
+<span class="sd">       cons_tds (str): three-character TDS number (e.g., &#39;005&#39; or &#39;505&#39;) associated with the </span>
+<span class="sd">                       relevant consolidation</span>
+<span class="sd">       </span>
+<span class="sd">       Returns:</span>
+<span class="sd">       QgsVectorLayer: new layer containing developments associated with the relevant consolidation&#39;&#39;&#39;</span>
+	
+	<span class="n">layers</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span>
+	<span class="n">layer</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[</span><span class="n">dev_layer_id</span><span class="p">]</span>
+	
+	<span class="c1">#layer.selectByExpression(f&#39;&#39;&#39;&quot;cons_tds&quot;= &#39;{cons_tds}&#39; &#39;&#39;&#39;, QgsVectorLayer.SetSelection)</span>
+	
+	<span class="n">cons_devs</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:extractbyexpression&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="n">layer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span><span class="o">.</span><span class="n">dataSourceUri</span><span class="p">(),</span>
+	<span class="s1">&#39;EXPRESSION&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39; &quot;cons_tds&quot; = &#39;</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">&#39; &#39;&#39;&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/Consolidations/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_developments.shp&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;FAIL_OUTPUT&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/Consolidations/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_other_developments.shp&#39;</span><span class="p">})</span>
+	
+	<span class="n">output_layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">cons_devs</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_developments&#39;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+	<span class="n">fail_output_layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">cons_devs</span><span class="p">[</span><span class="s1">&#39;FAIL_OUTPUT&#39;</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_other_developments&#39;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+	
+	<span class="k">return</span> <span class="p">[</span><span class="n">output_layer</span><span class="p">,</span> <span class="n">fail_output_layer</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">get_consolidation_assets</span><span class="p">(</span><span class="n">assets_layer_id</span><span class="p">,</span> <span class="n">cons_tds</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;Extract waste assets (including exterior compactors and bulk containers) </span>
+<span class="sd">        associated with a particular NYCHA consolidation into a new layer.</span>
+<span class="sd">       </span>
+<span class="sd">       Params:</span>
+<span class="sd">       buildings_layer_id (str): name of assets layer</span>
+<span class="sd">       cons_tds (str): three-character TDS number (e.g., &#39;005&#39; or &#39;505&#39;) associated with the </span>
+<span class="sd">                       relevant consolidation</span>
+<span class="sd">       </span>
+<span class="sd">       Returns:</span>
+<span class="sd">       QgsVectorLayer: new layer containing assets associated with the relevant consolidation&#39;&#39;&#39;</span>
+	
+	<span class="n">layers</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span>
+	<span class="n">layer</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[</span><span class="n">assets_layer_id</span><span class="p">]</span>
+	
+	<span class="n">cons_assets</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:extractbyexpression&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="n">layer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span><span class="o">.</span><span class="n">dataSourceUri</span><span class="p">(),</span>
+	<span class="s1">&#39;EXPRESSION&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39; &quot;cons_tds&quot; = &#39;</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">&#39; &#39;&#39;&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/Consolidations/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_assets.shp&#39;</span><span class="p">})[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">]</span>
+	
+	<span class="n">new_layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">cons_assets</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_assets&#39;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+	
+	<span class="k">return</span> <span class="n">new_layer</span>
+
+<span class="k">def</span> <span class="nf">get_consolidation_recycling</span><span class="p">(</span><span class="n">recycling_layer_id</span><span class="p">,</span> <span class="n">cons_tds</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;Extract recycling bin locations associated with a particular NYCHA consolidation into a new layer.</span>
+<span class="sd">       </span>
+<span class="sd">       Params:</span>
+<span class="sd">       recycling_layer_id (str): name of recycling bins layer</span>
+<span class="sd">       cons_tds (str): three-character TDS number (e.g., &#39;005&#39; or &#39;505&#39;) associated with the </span>
+<span class="sd">                       relevant consolidation</span>
+<span class="sd">       </span>
+<span class="sd">       Returns:</span>
+<span class="sd">       QgsVectorLayer: new layer containing buildings associated with the relevant consolidation&#39;&#39;&#39;</span>
+	
+	<span class="n">layers</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span>
+	<span class="n">layer</span> <span class="o">=</span> <span class="n">layers</span><span class="p">[</span><span class="n">recycling_layer_id</span><span class="p">]</span>
+	
+	<span class="n">cons_assets</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;native:extractbyexpression&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="n">layer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span><span class="o">.</span><span class="n">dataSourceUri</span><span class="p">(),</span>
+	<span class="s1">&#39;EXPRESSION&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39; &quot;cons_tds&quot; = &#39;</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">&#39; &#39;&#39;&#39;</span><span class="p">,</span>
+	<span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span><span class="sa">f</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/Consolidations/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_recycling.shp&#39;</span><span class="p">})[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">]</span>
+	
+	<span class="n">new_layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">cons_assets</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_recycling&#39;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+	
+	<span class="k">return</span> <span class="n">new_layer</span>
+
+
+<span class="k">def</span> <span class="nf">render_map</span><span class="p">(</span><span class="n">defining_layer</span><span class="p">,</span> <span class="n">cons_tds</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;Create new layout, including legend and proper map extents, showing relevant consolidation with</span>
+<span class="sd">        associated developments, buildings, and waste assets. Export map image to PDF for inclusion in</span>
+<span class="sd">        Waste Action Plan for each consolidation.</span>
+<span class="sd">       </span>
+<span class="sd">       Params:</span>
+<span class="sd">       defining_layer (str): name of the layer that is to define layout extents. Here, consolidation layer</span>
+<span class="sd">                             is invariably used.</span>
+<span class="sd">       cons_tds (str): three-character TDS number (e.g., &#39;005&#39; or &#39;505&#39;) associated with the </span>
+<span class="sd">                       relevant consolidation</span>
+<span class="sd">       </span>
+<span class="sd">       Returns: None &#39;&#39;&#39;</span>
+	<span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+	<span class="c1">#Create Layout</span>
+	<span class="n">manager</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">layoutManager</span><span class="p">()</span>       
+	<span class="n">layout</span> <span class="o">=</span> <span class="n">QgsPrintLayout</span><span class="p">(</span><span class="n">project</span><span class="p">)</span>        
+	<span class="n">layoutName</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s2">_layout&quot;</span>
+	
+	<span class="n">layouts_list</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="n">printLayouts</span><span class="p">()</span>
+	<span class="k">for</span> <span class="n">current_layout</span> <span class="ow">in</span> <span class="n">layouts_list</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">current_layout</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="o">==</span> <span class="n">layoutName</span><span class="p">:</span>
+			<span class="n">manager</span><span class="o">.</span><span class="n">removeLayout</span><span class="p">(</span><span class="n">current_layout</span><span class="p">)</span>
+
+	<span class="c1">#initializes default settings for blank print layout canvas</span>
+	<span class="n">layout</span><span class="o">.</span><span class="n">initializeDefaults</span><span class="p">()</span>  
+	
+	<span class="n">layout</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">layoutName</span><span class="p">)</span>
+	<span class="n">manager</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+	
+	<span class="nb">map</span> <span class="o">=</span> <span class="n">QgsLayoutItemMap</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+
+	<span class="c1">#I have no idea what this does, but it is necessary</span>
+	<span class="nb">map</span><span class="o">.</span><span class="n">setRect</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+	<span class="nb">map</span><span class="o">.</span><span class="n">setCrs</span><span class="p">(</span><span class="n">defining_layer</span><span class="o">.</span><span class="n">crs</span><span class="p">())</span>
+	
+	<span class="n">rectangle</span> <span class="o">=</span> <span class="n">defining_layer</span><span class="o">.</span><span class="n">extent</span><span class="p">()</span>
+	<span class="nb">map</span><span class="o">.</span><span class="n">zoomToExtent</span><span class="p">(</span><span class="n">rectangle</span><span class="p">)</span>
+	<span class="n">layout</span><span class="o">.</span><span class="n">addLayoutItem</span><span class="p">(</span><span class="nb">map</span><span class="p">)</span>
+	
+	<span class="nb">map</span><span class="o">.</span><span class="n">attemptMove</span><span class="p">(</span><span class="n">QgsLayoutPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">QgsUnitTypes</span><span class="o">.</span><span class="n">LayoutMillimeters</span><span class="p">))</span>
+	<span class="nb">map</span><span class="o">.</span><span class="n">attemptResize</span><span class="p">(</span><span class="n">QgsLayoutSize</span><span class="p">(</span><span class="mf">215.9</span><span class="p">,</span><span class="mf">279.4</span><span class="p">,</span> <span class="n">QgsUnitTypes</span><span class="o">.</span><span class="n">LayoutMillimeters</span><span class="p">))</span>
+	
+	<span class="c1"># Adding Legend</span>
+	<span class="n">legend</span> <span class="o">=</span> <span class="n">QgsLayoutItemLegend</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+	
+	<span class="n">layersToAdd</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;template_assets_da495e07_720a_40c6_be18_e661edc1036a&#39;</span><span class="p">,</span><span class="s1">&#39;recycling_bins_b5449960_727b_4115_b168_c811f4c9fa41&#39;</span><span class="p">,</span> <span class="s1">&#39;NYCHA_Address_Points_20200212_bc5219bf_115c_4010_870c_82862031a0cf&#39;</span><span class="p">,</span> <span class="s1">&#39;template_buildings_72ddfa7a_bfcc_4724_b19f_084b6dcb4cc5&#39;</span><span class="p">,</span><span class="s1">&#39;template_developments_5eb69da0_b932_4e62_91dc_fac5a919b767&#39;</span><span class="p">]</span>
+	<span class="n">legend_layers</span> <span class="o">=</span> <span class="p">[</span><span class="n">QgsProject</span><span class="p">()</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()[</span><span class="n">layername</span><span class="p">]</span> <span class="k">for</span> <span class="n">layername</span> <span class="ow">in</span> <span class="n">layersToAdd</span><span class="p">]</span>
+	
+	<span class="n">root</span> <span class="o">=</span> <span class="n">QgsLayerTree</span><span class="p">()</span>
+	<span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">legend_layers</span><span class="p">:</span>
+		<span class="c1">#add layer objects to the layer tree</span>
+		<span class="n">root</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+	<span class="n">legend</span><span class="o">.</span><span class="n">model</span><span class="p">()</span><span class="o">.</span><span class="n">setRootGroup</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+	
+	<span class="n">root</span><span class="o">.</span><span class="n">findLayers</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">setCustomProperty</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;0,1&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;legend/node-order&quot;</span><span class="p">)</span>
+	<span class="n">root</span><span class="o">.</span><span class="n">findLayers</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">setCustomProperty</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;hidden&quot;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;legend/title-style&quot;</span><span class="p">)</span>
+	<span class="n">root</span><span class="o">.</span><span class="n">findLayers</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">checked</span> <span class="o">=</span> <span class="s2">&quot;Qt::Checked&quot;</span>
+	
+	<span class="n">layout</span><span class="o">.</span><span class="n">addLayoutItem</span><span class="p">(</span><span class="n">legend</span><span class="p">)</span>
+	<span class="n">legend</span><span class="o">.</span><span class="n">attemptMove</span><span class="p">(</span><span class="n">QgsLayoutPoint</span><span class="p">(</span><span class="mf">154.004</span><span class="p">,</span><span class="mf">226.012</span><span class="p">,</span> <span class="n">QgsUnitTypes</span><span class="o">.</span><span class="n">LayoutMillimeters</span><span class="p">))</span>
+	
+	
+	<span class="n">exporter</span> <span class="o">=</span> <span class="n">QgsLayoutExporter</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+	<span class="n">image_settings</span> <span class="o">=</span> <span class="n">exporter</span><span class="o">.</span><span class="n">ImageExportSettings</span><span class="p">()</span>
+	<span class="n">image_settings</span><span class="o">.</span><span class="n">dpi</span> <span class="o">=</span> <span class="mi">300</span>
+	<span class="n">image_settings</span><span class="o">.</span><span class="n">cropToContents</span> <span class="o">=</span> <span class="kc">True</span>
+	
+	<span class="n">exporter</span><span class="o">.</span><span class="n">exportToImage</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/Consolidations/consolidation_maps/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_asset_map.png&#39;</span><span class="p">,</span><span class="n">image_settings</span><span class="p">)</span>
+	
+
+
+<span class="k">def</span> <span class="nf">generate_consolidation_assetmap</span><span class="p">(</span><span class="n">cons_tds</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+	<span class="sd">&#39;&#39;&#39;Using extraction methods defined above, generate asset map for relevant consolidation.</span>
+<span class="sd">       </span>
+<span class="sd">       Params:</span>
+<span class="sd">       cons_tds (str): three-character TDS number (e.g., &#39;005&#39; or &#39;505&#39;) associated with the </span>
+<span class="sd">                       relevant consolidation</span>
+<span class="sd">       replace (bool): Indicates whether existing asset maps in designated file path should be </span>
+<span class="sd">                       overwritten (e.g., because underlying layers have been updated).</span>
+<span class="sd">       </span>
+<span class="sd">       Returns: None&#39;&#39;&#39;</span>
+	
+	<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/Consolidations/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">):</span>
+		<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/Consolidations/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+	<span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/Consolidations/consolidation_maps/</span><span class="si">{</span><span class="n">cons_tds</span><span class="si">}</span><span class="s1">_asset_map.png&#39;</span><span class="p">))</span> <span class="ow">or</span> <span class="p">(</span><span class="n">replace</span><span class="o">==</span><span class="kc">True</span><span class="p">):</span>
+		<span class="n">consolidation_development_layers</span> <span class="o">=</span> <span class="n">get_consolidation_developments</span><span class="p">(</span><span class="n">DEVS_LAYER_ID</span><span class="p">,</span> <span class="n">cons_tds</span><span class="p">)</span>
+		<span class="n">consolidation_development_layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">loadNamedStyle</span><span class="p">(</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/styles/consolidation_dev_style_assetmap.qml&#39;</span><span class="p">)</span>
+		<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">consolidation_development_layers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+		<span class="c1">#QgsProject.instance().addMapLayer(consolidation_development_layers[1])</span>
+
+		<span class="n">consolidation_buildings</span> <span class="o">=</span> <span class="n">get_consolidation_buildings</span><span class="p">(</span><span class="n">BUILDINGS_LAYER_ID</span><span class="p">,</span> <span class="n">cons_tds</span><span class="p">)</span>
+		<span class="n">consolidation_buildings</span><span class="o">.</span><span class="n">loadNamedStyle</span><span class="p">(</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/styles/building_style.qml&#39;</span><span class="p">)</span>
+		<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">consolidation_buildings</span><span class="p">)</span>
+		
+		<span class="n">consolidation_entrances</span> <span class="o">=</span> <span class="n">get_consolidation_entrances</span><span class="p">(</span><span class="n">ENTRANCES_LAYER_ID</span><span class="p">,</span> <span class="n">cons_tds</span><span class="p">)</span>
+		<span class="n">consolidation_entrances</span><span class="o">.</span><span class="n">loadNamedStyle</span><span class="p">(</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/styles/entrances_style.qml&#39;</span><span class="p">)</span>
+		<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">consolidation_entrances</span><span class="p">)</span>
+
+		<span class="n">consolidation_assets</span> <span class="o">=</span> <span class="n">get_consolidation_assets</span><span class="p">(</span><span class="n">ASSETS_LAYER_ID</span><span class="p">,</span> <span class="n">cons_tds</span><span class="p">)</span>
+		<span class="n">consolidation_assets</span><span class="o">.</span><span class="n">loadNamedStyle</span><span class="p">(</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/styles/waste_assets_style.qml&#39;</span><span class="p">)</span>
+		<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">consolidation_assets</span><span class="p">)</span>
+		
+		<span class="n">consolidation_recycling_bins</span> <span class="o">=</span> <span class="n">get_consolidation_recycling</span><span class="p">(</span><span class="n">RECYCLING_BINS_LAYER_ID</span><span class="p">,</span> <span class="n">cons_tds</span><span class="p">)</span>
+		<span class="n">consolidation_recycling_bins</span><span class="o">.</span><span class="n">loadNamedStyle</span><span class="p">(</span><span class="s1">&#39;/Users/kyleslugg/Documents/GIS/NYCHA/styles/recycling_bins.qml&#39;</span><span class="p">)</span>
+		<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">consolidation_recycling_bins</span><span class="p">)</span>
+		
+		<span class="n">render_map</span><span class="p">(</span><span class="n">consolidation_development_layers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cons_tds</span><span class="p">)</span>
+		
+		<span class="k">for</span> <span class="n">lyr_name</span> <span class="ow">in</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+			<span class="k">if</span> <span class="n">lyr_name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">BASEMAP_ID</span><span class="p">,</span> <span class="n">DEVS_LAYER_ID</span><span class="p">,</span> <span class="n">BUILDINGS_LAYER_ID</span><span class="p">,</span> 
+			<span class="n">ASSETS_LAYER_ID</span><span class="p">,</span> <span class="n">RECYCLING_BINS_LAYER_ID</span><span class="p">,</span> <span class="n">ENTRANCES_LAYER_ID</span><span class="p">,</span> 
+			<span class="s1">&#39;template_assets_da495e07_720a_40c6_be18_e661edc1036a&#39;</span><span class="p">,</span><span class="s1">&#39;template_buildings_72ddfa7a_bfcc_4724_b19f_084b6dcb4cc5&#39;</span><span class="p">,</span>
+			<span class="s1">&#39;template_developments_5eb69da0_b932_4e62_91dc_fac5a919b767&#39;</span><span class="p">,</span> <span class="s1">&#39;recycling_bins_b5449960_727b_4115_b168_c811f4c9fa41&#39;</span><span class="p">,</span>
+			<span class="s1">&#39;NYCHA_Address_Points_20200212_bc5219bf_115c_4010_870c_82862031a0cf&#39;</span><span class="p">]:</span>
+				<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">removeMapLayer</span><span class="p">(</span><span class="n">lyr_name</span><span class="p">)</span>
+	
+	<span class="k">else</span><span class="p">:</span>
+		<span class="k">pass</span>
+	
+<span class="c1"># Using list of consolidations, generate asset map for each consolidation</span>
+
+<span class="n">consolidations</span> <span class="o">=</span> <span class="n">get_consolidations</span><span class="p">(</span><span class="n">DEVS_LAYER_ID</span><span class="p">,</span> <span class="s1">&#39;cons_tds&#39;</span><span class="p">,</span> <span class="s1">&#39;consolidat&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">cons_tds</span> <span class="ow">in</span> <span class="n">consolidations</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+	<span class="n">generate_consolidation_assetmap</span><span class="p">(</span><span class="n">cons_tds</span><span class="p">)</span>
+</pre></div>
+								
+									 </div>
+								</div>
+								</div>
+								</div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="get-in-touch" class="colorlib-bg-color">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+							<h2>Get in Touch!</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
+							data-animate-effect="fadeInLeft">
+							<p class="colorlib-lead">Reach out to
+								collaborate, grab coffee, or just to
+								chat about the cities and spaces we live in.</p>
+							<p><a href="mailto:kyle@kyleslugg.com" class="btn btn-primary
+										btn-learn">Email me!</a></p>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="../js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="../js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="../js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="../js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="../js/jquery.flexslider-min.js"></script>
+	<!-- Sticky Kit -->
+	<script src="../js/sticky-kit.min.js"></script>
+
+
+	<!-- MAIN JS -->
+	<script src="../js/main.js"></script>
+
+</body>
+
+</html>

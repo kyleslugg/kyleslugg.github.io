@@ -1,0 +1,48 @@
+[
+  {
+    "date": "2023-06-15",
+    "title": "WalkWithMe",
+    "imgSrc": "WalkWithMe.jpg",
+    "blurbText": "Closed-circuit walk routing using NYC City Street Centerlines and Open Street Map data.",
+    "fulltextUri": "Placeholder"
+  },
+  {
+    "date": "2023-02-10",
+    "title": "NYCHA Voter Turnout",
+    "imgSrc": "NYCHA_Turnout.jpg",
+    "blurbText": "Calculating Voter Turnout at NYCHA Developments with Jupyter and QGIS",
+    "fulltextUri": "/freestanding_projects/Voter_File_Analysis.html"
+  },
+
+  {
+    "date": "2022-01-07",
+    "title": "NYCHA Waste Asset Data Pipeline",
+    "imgSrc": "NYCHA_Waste_Assets.jpg",
+    "blurbText": "Mapping Waste Assets at NYCHA Developments using QGIS Python Scripting Capabilities",
+    "fulltextUri": "https://github.com/kyleslugg/Waste_IAPs"
+  },
+
+  {
+    "date": "2020-06-30",
+    "title": "Mapping Food Access in NYC",
+    "imgSrc": "Food_Access.jpg",
+    "blurbText": "Re-evaluating conventional measures of food access in the context of New York City's food retail landscape.",
+    "fulltextUri": "https://github.com/kyleslugg/NYC-Food-Access-WEBMAP"
+  },
+
+  {
+    "date": "2020-03-30",
+    "title": "Evaluating NYC Vision Zero Measures",
+    "imgSrc": "Vision_Zero.jpg",
+    "blurbText": "An analysis of speed reduction measures' impact on traffic injuries and fatalities among pedestrians and bicyclists in New York City.",
+    "fulltextUri": "Placeholder"
+  },
+
+  {
+    "date": "2020-03-24",
+    "title": "Michigan Eviction Case Filings and Neighborhood Characteristics in Urban and Rural Places",
+    "imgSrc": "Evictions_Diagram.png",
+    "blurbText": "A Michigan statewide analysis of eviction rates in relation to demographic, housing, and legal variables",
+    "fulltextUri": "Placeholder"
+  }
+]
