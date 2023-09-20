@@ -1,5 +1,12 @@
 [
   {
+    "date": "2023-09-19",
+    "title": "Speedicycle",
+    "imgSrc": "Speedicycle.jpg",
+    "blurbText": "A lightning-fast Rust module for finding fixed-cost circuits on streets and other graphs",
+    "fulltextUri": "https://github.com/StrideStreets/speedicycle"
+  },
+  {
     "date": "2023-06-15",
     "title": "WalkWithMe",
     "imgSrc": "WalkWithMe.jpg",

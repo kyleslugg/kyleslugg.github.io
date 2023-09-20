@@ -14,7 +14,6 @@ export default function Work() {
     <Card sx={{ fontFamily: 'Arial' }}>
       <div className="card">
         <h3>The Latest</h3>
-        <h4>🏗 Hard Hats Advised: Some portions under construction 🏗</h4>
         <Grid>{blurbElements}</Grid>
       </div>
     </Card>
