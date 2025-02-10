@@ -37,7 +37,7 @@ export default function PostLede(props: {
         <p>
           {blurbText}{' '}
           <a href={fulltextUri} target="_blank" style={{ marginRight: '10px' }}>
-            <span style={{ float: 'right', 'margin-right': '5px' }}>
+            <span style={{ float: 'right', marginRight: '5px' }}>
               Read More &#10142;{' '}
             </span>
           </a>
