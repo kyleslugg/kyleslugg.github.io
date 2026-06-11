@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base>
+  <div class="formControl" id="contact-form">
+    <div
+      style="display: grid; grid-template-columns: minmax(100px, 10%) minmax(240px, 80%)"
+    >
+      <label class="formLabel" for="contact-name">Name:</label>
+      <div class="minput">
+        <input id="contact-name" class="formEl" placeholder="Name" />
+      </div>
+      <label class="formLabel" for="contact-subject">Subject:</label>
+      <div class="minput">
+        <input
+          id="contact-subject"
+          class="formEl"
+          placeholder="Just dropping by..."
+        />
+      </div>
+      <label class="formLabel" for="contact-email">Email:</label>
+      <div class="minput" id="emailField">
+        <input
+          id="contact-email"
+          class="formEl"
+          type="email"
+          placeholder="its-a-me@example.com"
+        />
+      </div>
+      <label class="formLabel" for="contact-phone">Phone:</label>
+      <div class="minput">
+        <input
+          id="contact-phone"
+          class="formEl"
+          type="tel"
+          placeholder="(800) 888-8888"
+        />
+      </div>
+    </div>
+    <label class="formLabel" style="margin-top: 20px" for="contact-message">
+      Message:
+    </label>
+    <div class="mtextfield">
+      <div class="moutline">
+        <textarea
+          id="contact-message"
+          class="formEl"
+          placeholder="What's on your mind?"></textarea>
+      </div>
+    </div>
+    <button class="mbtn" id="contact-submit">Submit</button>
+  </div>
+</Base>
+
+<script>
+  import emailjs from '@emailjs/browser';
+
+  emailjs.init('41dpsM5eCTMqhsLFZ');
+
+  const field = (id: string) =>
+    document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement;
+
+  document.getElementById('contact-submit')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const contactEmail = field('contact-email').value;
+    if (!contactEmail) {
+      document.getElementById('emailField')?.classList.add('error');
+    }
+    emailjs.send('ks_gmail', 'portfolio_contact', {
+      from_name: field('contact-name').value,
+      subject: field('contact-subject').value,
+      contact_email: contactEmail,
+      contact_number: field('contact-phone').value,
+      message: field('contact-message').value
+    });
+    for (const id of [
+      'contact-name',
+      'contact-subject',
+      'contact-email',
+      'contact-phone',
+      'contact-message'
+    ]) {
+      field(id).value = '';
+    }
+  });
+</script>

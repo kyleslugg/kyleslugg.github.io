@@ -1,0 +1,274 @@
+// Replaces the MUI components the old React app used (CssBaseline,
+// Container, Card, Toolbar, Typography, Link, form controls, Button).
+// Values are the computed styles measured from the MUI-rendered site,
+// so the static pages render identically.
+
+// --- CssBaseline ---
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  font-family: 'Courier New', courier, monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #fff;
+}
+
+// --- Container maxWidth="lg" ---
+.page-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: block;
+}
+@media (min-width: 600px) {
+  .page-container {
+    padding: 0 24px;
+  }
+}
+
+// --- Card (theme override: margin 10px, paddingTop 20px, flat) ---
+.mcard {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.87);
+  margin: 10px;
+  padding-top: 20px;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: hidden;
+}
+.mcard.arial {
+  font-family: Arial;
+}
+
+// --- Toolbar (theme override: flex wrap, no margin) ---
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 56px;
+}
+@media (min-width: 600px) {
+  .toolbar {
+    padding: 0 24px;
+    min-height: 64px;
+  }
+}
+
+// --- Typography variant="h4" (site title, fontWeight 600) ---
+.site-title {
+  font-size: 2.125rem;
+  font-weight: 600;
+  line-height: 1.235;
+  margin: 0;
+  padding: 0;
+  align-content: center;
+}
+
+// --- Header nav: Typography variant="h5" wrapper, underlined ---
+.nav-item {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.334;
+  padding: 8px;
+  text-decoration: underline;
+}
+
+// --- Footer social links (MuiLink body1, color black) ---
+.socialLinkHolder a {
+  display: flex;
+  gap: 4px;
+  margin: 0 15px 4px 0;
+  color: #000;
+  text-decoration: underline;
+  text-decoration-color: rgba(25, 118, 210, 0.4); // MUI Link underline tint
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.socialLinkHolder svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+// --- Work page post cards (was Card sx + theme) ---
+.postBlurbHolder {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-column-gap: 10px;
+  padding: 5px;
+  width: 100%;
+  height: 175px;
+  box-shadow: 0pt 0pt 2pt 2pt #00000022;
+}
+
+// --- Contact form (FormControl / FormLabel / Input / TextField / Button) ---
+.formControl {
+  display: flex;
+  flex-direction: column;
+  border: 0;
+  margin: 0;
+  padding: 20px;
+  vertical-align: top;
+}
+
+.formLabel {
+  display: flex;
+  align-items: end;
+  justify-content: left;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 1rem;
+  line-height: 1.4375em;
+  padding: 0;
+}
+
+// Standard (underline) input — MUI Input, size="small", margin="dense"
+.minput {
+  position: relative;
+  display: flex;
+  width: 100%;
+  margin-top: 16px;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: text;
+}
+.minput::before {
+  content: '\00a0';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  pointer-events: none;
+}
+.minput:hover::before {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+}
+.minput::after {
+  content: '\00a0';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom: 2px solid #1976d2;
+  transform: scaleX(0);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  pointer-events: none;
+}
+.minput:focus-within::after {
+  transform: scaleX(1);
+}
+.minput.error::before,
+.minput.error::after {
+  border-bottom-color: #d32f2f;
+}
+.minput.error::after {
+  transform: scaleX(1);
+}
+.minput input {
+  font: inherit;
+  letter-spacing: inherit;
+  color: currentColor;
+  background: none;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  display: block;
+  min-width: 0;
+  width: 100%;
+  padding: 1px 0 5px;
+}
+.minput input::placeholder {
+  color: currentColor;
+  opacity: 0.42;
+}
+
+// Outlined multiline field — MUI TextField, size="small", minRows 3
+.mtextfield {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  width: 100%;
+}
+.moutline {
+  position: relative;
+  display: flex;
+  font-size: 1rem;
+  line-height: 1.4375em;
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 4px;
+  padding: 8.5px 14px;
+  cursor: text;
+}
+// Border drawn as an overlay so it doesn't add to layout height,
+// matching MUI's absolutely-positioned fieldset outline.
+.moutline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.moutline:hover::after {
+  border-color: rgba(0, 0, 0, 0.87);
+}
+.moutline:focus-within::after {
+  border: 2px solid #1976d2;
+}
+.moutline textarea {
+  font: inherit;
+  letter-spacing: inherit;
+  color: currentColor;
+  background: none;
+  border: 0;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  resize: none;
+  height: 69px; // minRows={3} x 23px line-height
+}
+.moutline textarea::placeholder {
+  color: currentColor;
+  opacity: 0.42;
+}
+
+// MUI Button (text variant, primary, full-width flex child)
+.mbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: inherit;
+  text-transform: uppercase;
+  color: #1976d2;
+  background-color: transparent;
+  border: 0;
+  border-radius: 4px;
+  padding: 6px 8px;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.mbtn:hover {
+  background-color: rgba(25, 118, 210, 0.04);
+  border-color: transparent;
+}

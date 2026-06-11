@@ -1,0 +1,30 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+const sections = [
+  { title: 'Home', url: '/' },
+  { title: 'About', url: '/about' },
+  { title: 'Work', url: '/work' },
+  { title: 'Contact', url: '/contact' }
+];
+---
+
+<div class="mcard">
+  <div class="toolbar headerSection">
+    <h4 class="site-title">{title}</h4>
+  </div>
+  <div
+    class="toolbar headerSection"
+    id="headerLinks"
+    style="border-bottom: .5pt solid #222222"
+  >
+    <div>
+      {/* prettier-ignore */}
+      {sections.map((section) => <span class="nav-item"><a href={section.url}>{section.title}</a></span>)}
+    </div>
+  </div>
+</div>
