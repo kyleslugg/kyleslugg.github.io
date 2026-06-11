@@ -15,7 +15,7 @@ const HeaderLinkSection = (props: HLProps) => {
           color="inherit"
           key={section.title}
           variant="h5"
-          href={section.url}
+          component="span"
           sx={{ p: 1 }}
         >
           <Link to={section.url}>{section.title}</Link>

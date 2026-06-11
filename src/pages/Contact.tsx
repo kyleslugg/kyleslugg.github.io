@@ -5,6 +5,8 @@ import Input from '@mui/material/Input';
 import { FormControl, FormLabel } from '@mui/material';
 import emailjs from '@emailjs/browser';
 
+emailjs.init('41dpsM5eCTMqhsLFZ');
+
 export default function Contact() {
   const defaults = {
     name: 'Name',
@@ -21,8 +23,6 @@ export default function Contact() {
   const [contactNumber, setContactNumber] = useState<string>();
   const [message, setMessage] = useState<string>();
 
-  emailjs.init('41dpsM5eCTMqhsLFZ');
-
   const resetFields = () => {
     setName('');
     setSubject('');
@@ -31,8 +31,7 @@ export default function Contact() {
     setMessage('');
   };
 
-  const handleSubmit = (event: unknown) => {
-    //@ts-ignore
+  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     if (!contactEmail) {
       setEmailError(true);

@@ -4,10 +4,10 @@ import blurbs from '../assets/markdown/posts/blurbs.json';
 import '../styles/Posts.scss';
 
 export default function Work() {
-  const blurbData: BlurbInfo[] = JSON.parse(JSON.stringify(blurbs));
+  const blurbData: BlurbInfo[] = blurbs;
   const photoDirectory = '/post_images/';
   const blurbElements = blurbData.map((el) => (
-    <PostLede data={el} photoDirectory={photoDirectory} />
+    <PostLede key={el.title} data={el} photoDirectory={photoDirectory} />
   ));
 
   return (

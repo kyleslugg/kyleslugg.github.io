@@ -6,22 +6,12 @@ function Homepage() {
   return (
     <Card
       sx={{
-        //backgroundColor: '#93B2DE',
         fontSize: '1rem',
         fontFamily: 'Arial',
         paddingTop: '0px'
       }}
     >
-      {/* import('../assets/markdown/HomepageIntro.md').then((res) => {
-  fetch(res.default)
-    .then((response) => response.text())
-    .then((text) => console.log(text));
-}); */}
       <div className="card">
-        {/* <Markdown className="markdown" key={'a'}>
-          {pageContent}
-        </Markdown> */}
-        {/* <h1>🏗🏗🏗 UNDER ACTIVE CONSTRUCTION -- MORE COMING SOON! 🏗🏗🏗</h1> */}
         <p>
           Welcome! I'm Kyle Slugg-Urbino. I build apps (mostly in React.js +
           Typescript on the frontend and Node.js or Python on the back) and
