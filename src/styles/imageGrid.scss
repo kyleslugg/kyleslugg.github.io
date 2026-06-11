@@ -19,39 +19,38 @@
     'photo2 photo2 photo3 photo3 photo3 photo3'
     'photo2 photo2 photo3 photo3 photo3 photo3';
 
-  div {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // keep the images' intrinsic size from expanding the 1fr grid tracks
+    min-width: 0;
+    min-height: 0;
+    object-fit: cover;
+    object-position: center center;
   }
 }
 
 .headshot {
   grid-area: headshot;
-  background-image: url('../assets/images/headshot_square.jpg');
 }
 
 .photo1 {
   grid-area: photo1;
-  background-image: url('../assets/images/dia1.jpg');
 }
 
 .photo2 {
   grid-area: photo2;
-  background-image: url('../assets/images/misc2.jpg');
 }
 
 .photo5 {
   grid-area: photo5;
-  background-image: url('../assets/images/sk1.jpg');
 }
 
 .photo3 {
   grid-area: photo3;
-  background-image: url('../assets/images/sk2.jpg');
 }
 
 .photo4 {
   grid-area: photo4;
-  background-image: url('../assets/images/dia3.jpg');
 }

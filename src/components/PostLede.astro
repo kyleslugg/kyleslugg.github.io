@@ -15,11 +15,7 @@ const { title, imgSrc, blurbText, fulltextUri } = data;
 ---
 
 <div class="mcard postBlurbHolder">
-  <div
-    class="workImgHolder"
-    style={`background-image: url(${photoDirectory + imgSrc})`}
-  >
-  </div>
+  <img class="workImgHolder" src={photoDirectory + imgSrc} alt={title} />
   <div class="postBlurbText">
     <h4>{title}</h4>
     <p>

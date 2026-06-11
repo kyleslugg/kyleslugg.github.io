@@ -1,12 +1,24 @@
 ---
 import '../styles/imageGrid.scss';
+import dia1 from '../assets/images/dia1.jpg';
+import misc2 from '../assets/images/misc2.jpg';
+import sk1 from '../assets/images/sk1.jpg';
+import headshot from '../assets/images/headshot_square.jpg';
+import sk2 from '../assets/images/sk2.jpg';
+import dia3 from '../assets/images/dia3.jpg';
+
+// Real <img> elements (not CSS background-image) so extensions like
+// Dark Reader, which rewrite/drop background images, leave them intact.
+const photos = [
+  { class: 'photo1', src: dia1.src, alt: '' },
+  { class: 'photo2', src: misc2.src, alt: '' },
+  { class: 'photo5', src: sk1.src, alt: '' },
+  { class: 'headshot', src: headshot.src, alt: 'Kyle Slugg-Urbino' },
+  { class: 'photo3', src: sk2.src, alt: '' },
+  { class: 'photo4', src: dia3.src, alt: '' }
+];
 ---
 
 <div class="container">
-  <div class="photo1"></div>
-  <div class="photo2"></div>
-  <div class="photo5"></div>
-  <div class="headshot"></div>
-  <div class="photo3"></div>
-  <div class="photo4"></div>
+  {photos.map((p) => <img class={p.class} src={p.src} alt={p.alt} />)}
 </div>
