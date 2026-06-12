@@ -127,7 +127,7 @@ rotate it anytime in the account's App Passwords settings.
 protocol (50 plays/batch, original timestamps; epoch-dated Last.fm
 artifacts are excluded). `--count` sizes the job (read-only); `--run` imports oldest-first,
 checkpointing to a gitignored state file, so it's safe to interrupt and
-resume (including after bearer-token expiry — regenerate and re-run).
+resume.
 `--test` imports the single oldest play first to verify auth and
 timestamp handling. Credentials in `.env`: `LASTFM_USER`,
 `LASTFM_API_KEY`, `ROCKSKY_API_KEY`, `ROCKSKY_SHARED_SECRET`.
