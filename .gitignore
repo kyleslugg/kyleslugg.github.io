@@ -25,3 +25,6 @@ dist-ssr
 
 # Astro generated types
 .astro
+
+# Local secrets (ATPROTO_APP_PASSWORD)
+.env
