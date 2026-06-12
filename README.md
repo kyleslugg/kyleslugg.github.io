@@ -132,6 +132,13 @@ resume.
 timestamp handling. Credentials in `.env`: `LASTFM_USER`,
 `LASTFM_API_KEY`, `ROCKSKY_API_KEY`, `ROCKSKY_SHARED_SECRET`.
 
+**Status (June 2026): blocked upstream.** Rocksky's ingestion silently
+drops bulk submissions (batches answered `OK` but records never
+persist) and 500s on certain tracks; reported to the maintainers. The
+live Last.fm→Rocksky mirror works; Last.fm remains the system of
+record. Re-attempt the import (it resumes/dedups safely) once the
+upstream issue is fixed.
+
 ## Deployment
 
 Cloudflare Pages, connected to this repository: build command

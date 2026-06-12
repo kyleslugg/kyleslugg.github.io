@@ -30,7 +30,7 @@ import path from 'node:path';
 const ROOT = new URL('..', import.meta.url).pathname;
 const STATE_PATH = path.join(ROOT, '.lastfm-import-state.json');
 const PAGE_SIZE = 200; // Last.fm API max
-const BATCH = 50; // Audioscrobbler submission max
+const BATCH = Number(process.env.IMPORT_BATCH ?? 50); // Audioscrobbler submission max
 const BATCH_DELAY_MS = 2500;
 const HANDSHAKE_URL = 'https://audioscrobbler.rocksky.app/';
 // Plays timestamped before this are Last.fm data artifacts (bulk
