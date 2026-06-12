@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import tracks from '../data/playlist.json';
+import '../styles/playlist.scss';
+
+// One-click queue of the whole playlist — plays full tracks in any
+// browser, no account needed.
+const playAllUrl =
+  'https://www.youtube.com/watch_videos?video_ids=' +
+  tracks
+    .filter((t) => t.youtubeId)
+    .map((t) => t.youtubeId)
+    .join(',');
+
+const spotifyPlaylistUrl =
+  'https://open.spotify.com/playlist/3XE1EI1TpQNTJjzD3iD4Fe';
+
+const trackUrl = (t: (typeof tracks)[number]) =>
+  t.youtubeId
+    ? `https://www.youtube.com/watch?v=${t.youtubeId}`
+    : `https://www.youtube.com/results?search_query=${encodeURIComponent(
+        `${t.artists} ${t.title}`
+      )}`;
+---
+
+<Base>
+  <div class="mcard arial">
+    <div class="card">
+      <h3>SO me-coded</h3>
+      <p class="playlistDek">
+        A self-portrait in twenty tracks. Play it anywhere — no account
+        required.
+      </p>
+      <p class="playlistActions">
+        <a href={playAllUrl}>&#9654; Play all (YouTube)</a>
+        <a href={spotifyPlaylistUrl}>Open in Spotify</a>
+      </p>
+      <ol class="trackList">
+        {
+          tracks.map((t) => (
+            <li>
+              <a href={trackUrl(t)}>{t.title}</a>
+              <span class="trackArtists"> — {t.artists}</span>
+              <a
+                class="trackAlt"
+                href={`https://open.spotify.com/track/${t.spotifyTrackId}`}
+              >
+                spotify
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</Base>

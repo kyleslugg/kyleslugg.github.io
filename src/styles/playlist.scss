@@ -1,0 +1,36 @@
+.playlistDek {
+  color: rgba(0, 0, 0, 0.72);
+  margin-top: 0;
+}
+
+.playlistActions {
+  font-family: 'Courier New', courier, monospace;
+  display: flex;
+  gap: 24px;
+  margin: 1.2rem 0 1.6rem;
+}
+
+.trackList {
+  padding-left: 2em;
+
+  li {
+    margin: 0.55em 0;
+
+    &::marker {
+      font-family: 'Courier New', courier, monospace;
+      font-size: 0.85rem;
+      color: rgba(0, 0, 0, 0.55);
+    }
+  }
+}
+
+.trackArtists {
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.trackAlt {
+  font-family: 'Courier New', courier, monospace;
+  font-size: 0.75rem;
+  margin-left: 10px;
+  color: rgba(0, 0, 0, 0.45);
+}
