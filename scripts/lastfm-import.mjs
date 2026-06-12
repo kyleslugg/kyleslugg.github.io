@@ -1,6 +1,8 @@
 // One-off importer: replays Last.fm scrobble history into Rocksky via
-// app.rocksky.scrobble.createScrobble (bearer-token auth, original
-// timestamps). Dependency-free.
+// Rocksky's legacy Audioscrobbler submission protocol
+// (https://docs.rocksky.app/migrations/from-lastfm — "Username: your
+// API key, Password: shared secret"), which batches 50 plays per
+// request with original timestamps. Dependency-free.
 //
 //   node scripts/lastfm-import.mjs --count   size the job (read-only;
 //                                            needs only Last.fm creds)
@@ -10,24 +12,31 @@
 //   node scripts/lastfm-import.mjs --run     import, oldest first
 //
 // Credentials (.env or environment):
-//   LASTFM_USER            Last.fm username
-//   LASTFM_API_KEY         Last.fm API key (the mirror's key works)
-//   ROCKSKY_BEARER_TOKEN   bearer token for api.rocksky.app
+//   LASTFM_USER             Last.fm username
+//   LASTFM_API_KEY          Last.fm API key (the mirror's key works)
+//   ROCKSKY_API_KEY         from https://rocksky.app/apikeys
+//   ROCKSKY_SHARED_SECRET   from https://rocksky.app/apikeys
 //
 // Progress persists in .lastfm-import-state.json (gitignored): the run
 // freezes an upper timestamp bound at start (so the live Last.fm ->
 // Rocksky mirror keeps working without shifting pagination) and walks
-// from the oldest play forward, checkpointing as it goes. Safe to
-// interrupt and re-run — including after a 401 when the bearer token
-// expires: regenerate the token and re-run to resume.
+// from the oldest play forward, checkpointing after every batch. Safe
+// to interrupt and re-run.
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import path from 'node:path';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const STATE_PATH = path.join(ROOT, '.lastfm-import-state.json');
 const PAGE_SIZE = 200; // Last.fm API max
-const SCROBBLE_DELAY_MS = 800;
+const BATCH = 50; // Audioscrobbler submission max
+const BATCH_DELAY_MS = 2500;
+const HANDSHAKE_URL = 'https://audioscrobbler.rocksky.app/';
+// Plays timestamped before this are Last.fm data artifacts (bulk
+// imports that lost their dates land at the Unix epoch) and are
+// excluded — importing them would permanently skew listening stats.
+const TIMESTAMP_FLOOR = Date.UTC(2002, 0, 1) / 1000;
 
 function env(name, required = true) {
   if (process.env[name]) return process.env[name];
@@ -46,6 +55,7 @@ function env(name, required = true) {
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const md5 = (s) => createHash('md5').update(s, 'utf8').digest('hex');
 
 async function lastfmPage({ user, apiKey, from, to, page }) {
   const params = new URLSearchParams({
@@ -80,46 +90,55 @@ async function lastfmPage({ user, apiKey, from, to, page }) {
   };
 }
 
-async function createScrobble(track, token, attempt = 0) {
-  const res = await fetch(
-    'https://api.rocksky.app/xrpc/app.rocksky.scrobble.createScrobble',
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify({
-        title: track.title,
-        artist: track.artist,
-        ...(track.album ? { album: track.album } : {}),
-        ...(track.mbId ? { mbId: track.mbId } : {}),
-        timestamp: track.uts
-      })
-    }
-  );
-  if (res.status === 401) {
-    throw new Error(
-      'Rocksky returned 401 — the bearer token expired. Regenerate it, ' +
-        'update .env, and re-run; the import resumes from the checkpoint.'
-    );
+// Legacy Audioscrobbler 1.2 handshake: auth = md5(md5(password) + ts)
+async function handshake(creds) {
+  const t = Math.floor(Date.now() / 1000);
+  const params = new URLSearchParams({
+    hs: 'true',
+    p: '1.2',
+    c: 'tst', // generic test-client id, per protocol convention
+    v: '1.0',
+    u: creds.apiKey,
+    t: String(t),
+    a: md5(md5(creds.sharedSecret) + t)
+  });
+  const res = await fetch(`${HANDSHAKE_URL}?${params}`);
+  const body = (await res.text()).trim().split('\n');
+  if (body[0] !== 'OK') {
+    throw new Error(`Handshake failed: ${body.join(' | ').slice(0, 200)}`);
   }
-  if (res.status === 429 || res.status >= 500) {
-    if (attempt >= 6) throw new Error(`Rocksky ${res.status} after 6 retries`);
-    const wait = 5000 * 2 ** attempt;
-    console.log(`  ${res.status} from Rocksky; backing off ${wait / 1000}s`);
-    await sleep(wait);
-    return createScrobble(track, token, attempt + 1);
+  return { session: body[1], submitUrl: body[3] };
+}
+
+async function submitBatch(batch, hs, creds, attempt = 0) {
+  const params = new URLSearchParams({ s: hs.session });
+  batch.forEach((t, i) => {
+    params.set(`a[${i}]`, t.artist);
+    params.set(`t[${i}]`, t.title);
+    params.set(`i[${i}]`, String(t.uts));
+    params.set(`o[${i}]`, 'P');
+    params.set(`r[${i}]`, '');
+    params.set(`l[${i}]`, '');
+    params.set(`b[${i}]`, t.album ?? '');
+    params.set(`n[${i}]`, '');
+    params.set(`m[${i}]`, t.mbId ?? '');
+  });
+  const res = await fetch(hs.submitUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: params
+  });
+  const body = (await res.text()).trim();
+  if (body.startsWith('OK')) return hs;
+  if (attempt >= 5) throw new Error(`Submission failed after retries: ${body.slice(0, 200)}`);
+  if (body.startsWith('BADSESSION')) {
+    console.log('  session expired; re-handshaking');
+    return submitBatch(batch, await handshake(creds), creds, attempt + 1);
   }
-  if (!res.ok) {
-    // Unmatchable tracks are skipped by Rocksky's normalizer; treat a
-    // 4xx for a single play as skippable rather than fatal.
-    console.log(
-      `  skipped "${track.artist} — ${track.title}" (${res.status}: ${(await res.text()).slice(0, 120)})`
-    );
-    return { skipped: true };
-  }
-  return res.json().catch(() => ({}));
+  const wait = 5000 * 2 ** attempt;
+  console.log(`  submission not OK (${body.slice(0, 80)}); retrying in ${wait / 1000}s`);
+  await sleep(wait);
+  return submitBatch(batch, hs, creds, attempt + 1);
 }
 
 const lastfm = { user: env('LASTFM_USER'), apiKey: env('LASTFM_API_KEY') };
@@ -137,42 +156,64 @@ if (!mode) {
 }
 
 if (mode === 'count') {
-  const { total } = await lastfmPage({ ...lastfm, page: 1 });
-  const hours = (total * SCROBBLE_DELAY_MS) / 3600_000;
-  console.log(`Last.fm history for ${lastfm.user}: ${total} scrobbles`);
+  const all = await lastfmPage({ ...lastfm, page: 1 });
+  const real = await lastfmPage({ ...lastfm, from: TIMESTAMP_FLOOR, page: 1 });
+  const batches = Math.ceil(real.total / BATCH);
+  const mins = (batches * BATCH_DELAY_MS) / 60_000;
+  console.log(`Last.fm history for ${lastfm.user}: ${all.total} scrobbles`);
   console.log(
-    `Import plan: ~${hours.toFixed(1)}h at ${SCROBBLE_DELAY_MS}ms per play ` +
-      '(resumable; safe to interrupt)'
+    `  junk-dated (before ${new Date(TIMESTAMP_FLOOR * 1000).toISOString().slice(0, 10)}, skipped): ${all.total - real.total}`
+  );
+  console.log(`  importable: ${real.total}`);
+  console.log(
+    `Import plan: ${batches} batches of ${BATCH}, ~${mins.toFixed(0)}min at ` +
+      `${BATCH_DELAY_MS / 1000}s/batch (resumable; safe to interrupt)`
   );
   process.exit(0);
 }
 
-const token = env('ROCKSKY_BEARER_TOKEN');
+const creds = {
+  apiKey: env('ROCKSKY_API_KEY'),
+  sharedSecret: env('ROCKSKY_SHARED_SECRET')
+};
 
 if (mode === 'test') {
-  const probe = await lastfmPage({ ...lastfm, page: 1 });
-  const oldestPage = await lastfmPage({ ...lastfm, page: probe.totalPages });
+  const probe = await lastfmPage({ ...lastfm, from: TIMESTAMP_FLOOR, page: 1 });
+  const oldestPage = await lastfmPage({
+    ...lastfm,
+    from: TIMESTAMP_FLOOR,
+    page: probe.totalPages
+  });
   const oldest = oldestPage.tracks[oldestPage.tracks.length - 1];
   console.log(
     `Test-importing oldest play: "${oldest.artist} — ${oldest.title}" ` +
       `at ${new Date(oldest.uts * 1000).toISOString()}`
   );
-  const result = await createScrobble(oldest, token);
-  console.log('Response:', JSON.stringify(result).slice(0, 300));
+  const hs = await handshake(creds);
+  console.log('Handshake OK');
+  await submitBatch([oldest], hs, creds);
   console.log(
-    'Check your Rocksky profile: the play should appear with the date above. ' +
-      'If the date is wrong, stop and investigate before --run.'
+    'Submission accepted. Verify the play appears with the date above ' +
+      '(getActorScrobbles / your profile) before --run.'
   );
   process.exit(0);
 }
 
 const state = existsSync(STATE_PATH)
   ? JSON.parse(readFileSync(STATE_PATH, 'utf8'))
-  : { cursor: 0, frozenTo: Math.floor(Date.now() / 1000), imported: 0 };
+  : {
+      cursor: TIMESTAMP_FLOOR,
+      frozenTo: Math.floor(Date.now() / 1000),
+      imported: 0
+    };
+state.cursor = Math.max(state.cursor, TIMESTAMP_FLOOR);
 writeFileSync(STATE_PATH, JSON.stringify(state));
 console.log(
   `[import] starting from cursor=${state.cursor} (already imported: ${state.imported})`
 );
+
+let hs = await handshake(creds);
+console.log('[import] handshake OK');
 
 for (;;) {
   // Always fetch the OLDEST remaining page; the window shrinks from the
@@ -195,16 +236,17 @@ for (;;) {
           page: probe.totalPages
         });
   const oldestFirst = [...page.tracks].reverse();
-  for (const track of oldestFirst) {
-    await createScrobble(track, token);
-    state.cursor = track.uts + 1;
-    state.imported += 1;
+  for (let i = 0; i < oldestFirst.length; i += BATCH) {
+    const batch = oldestFirst.slice(i, i + BATCH);
+    hs = await submitBatch(batch, hs, creds);
+    state.cursor = batch[batch.length - 1].uts + 1;
+    state.imported += batch.length;
     writeFileSync(STATE_PATH, JSON.stringify(state));
-    if (state.imported % 25 === 0) {
-      const when = new Date(track.uts * 1000).toISOString().slice(0, 10);
-      console.log(`[import] ${state.imported}/${grandTotal} (up to ${when})`);
-    }
-    await sleep(SCROBBLE_DELAY_MS);
+    const when = new Date(batch[batch.length - 1].uts * 1000)
+      .toISOString()
+      .slice(0, 10);
+    console.log(`[import] ${state.imported}/${grandTotal} (up to ${when})`);
+    await sleep(BATCH_DELAY_MS);
   }
 }
 

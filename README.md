@@ -123,13 +123,14 @@ rotate it anytime in the account's App Passwords settings.
 ### One-off: Last.fm history import (Rocksky)
 
 `scripts/lastfm-import.mjs` replays Last.fm scrobble history into
-[Rocksky](https://rocksky.app) via `app.rocksky.scrobble.createScrobble`
-(bearer auth). `--count` sizes the job (read-only); `--run` imports oldest-first,
+[Rocksky](https://rocksky.app) via its legacy Audioscrobbler submission
+protocol (50 plays/batch, original timestamps; epoch-dated Last.fm
+artifacts are excluded). `--count` sizes the job (read-only); `--run` imports oldest-first,
 checkpointing to a gitignored state file, so it's safe to interrupt and
 resume (including after bearer-token expiry — regenerate and re-run).
 `--test` imports the single oldest play first to verify auth and
 timestamp handling. Credentials in `.env`: `LASTFM_USER`,
-`LASTFM_API_KEY`, `ROCKSKY_BEARER_TOKEN`.
+`LASTFM_API_KEY`, `ROCKSKY_API_KEY`, `ROCKSKY_SHARED_SECRET`.
 
 ## Deployment
 
