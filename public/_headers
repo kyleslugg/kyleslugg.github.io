@@ -1,2 +1,4 @@
 /.well-known/atproto-did
   Content-Type: text/plain
+/.well-known/site.standard.publication
+  Content-Type: text/plain

@@ -14,7 +14,10 @@ const work = defineCollection({
     blurb: z.string(),
     image: z.string().optional(),
     externalUrl: z.string().optional(),
-    draft: z.boolean().default(false)
+    draft: z.boolean().default(false),
+    // at:// URI of the Bluesky announcement post for an essay; when set,
+    // replies to that post render as comments at build time.
+    bskyPostUri: z.string().optional()
   })
 });
 

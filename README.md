@@ -1,8 +1,9 @@
-# kyleslugg.com
+# kyleslugg.co
 
 Personal website of Kyle Slugg-Urbino, built with [Astro](https://astro.build).
 Fully static — the only client-side JavaScript is the EmailJS call on the
-contact page, inlined at build time.
+contact page, inlined at build time. Canonical domain is **kyleslugg.co**
+(also the owner's ATProto handle); kyleslugg.com serves the same deployment.
 
 ## Commands
 
@@ -32,6 +33,26 @@ contact page, inlined at build time.
 - `public/` — static assets copied verbatim (post images, PDFs, standalone
   project pages)
 - `Archive/` — the pre-2023 static site, kept for reference; not built
+
+## ATProto syndication
+
+Essays (work entries with a markdown body) syndicate to the owner's PDS
+as [standard.site](https://standard.site) records via
+`scripts/atproto-sync.mjs` (dependency-free XRPC). It runs after every
+build; without `ATPROTO_APP_PASSWORD` (environment or local `.env`) it
+skips silently, so local builds need no credentials. In Cloudflare Pages
+the variable is set as a production build secret.
+
+- `npm run atproto:init` — one-time: creates the `site.standard.publication`
+  record and writes its AT-URI into `atproto.config.json` (commit that).
+- Document records use the entry slug as rkey, so re-syncs update in
+  place. Nothing is ever auto-posted to Bluesky and nothing is deleted.
+- To enable comments on an essay: post about it on Bluesky, put the
+  post's `at://` URI in the essay's `bskyPostUri` frontmatter; replies
+  render as static comments at next build.
+- Identity/verification: `/.well-known/atproto-did` (handle),
+  `/.well-known/site.standard.publication` (publication), and a
+  `<link rel="site.standard.document">` tag on each essay.
 
 ## Deployment
 

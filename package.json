@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview"
+    "build": "astro build && node scripts/atproto-sync.mjs",
+    "preview": "astro preview",
+    "atproto:init": "node scripts/atproto-sync.mjs --init"
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0"

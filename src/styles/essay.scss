@@ -100,6 +100,54 @@
   }
 }
 
+.essayComments {
+  margin-top: 3rem;
+  border-top: 0.5pt solid #222222;
+  padding-top: 1rem;
+
+  h2 {
+    font-family: 'Courier New', courier, monospace;
+    font-size: 1.1rem;
+  }
+}
+
+.essayCommentsHint {
+  font-family: 'Courier New', courier, monospace;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.comment {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 12px;
+  margin: 1.2rem 0;
+}
+
+.commentAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.commentMeta {
+  font-family: 'Courier New', courier, monospace;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.55);
+  margin: 0;
+
+  a {
+    color: inherit;
+  }
+}
+
+.commentText {
+  font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+  margin: 0.2rem 0 0;
+  line-height: 1.55;
+}
+
 .essayReturn {
   margin-top: 3rem;
   font-family: 'Courier New', courier, monospace;

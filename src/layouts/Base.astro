@@ -4,6 +4,14 @@ import '../styles/theme.scss';
 import '../styles/App.scss';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+// kyleslugg.co is canonical; kyleslugg.com serves the same deployment.
+// build.format 'file' leaves .html on pathnames; canonical URLs use the
+// clean form Cloudflare serves.
+const cleanPath = Astro.url.pathname
+  .replace(/\.html$/, '')
+  .replace(/^\/index$/, '/');
+const canonical = new URL(cleanPath, 'https://kyleslugg.co');
 ---
 
 <!doctype html>
@@ -12,6 +20,8 @@ import Footer from '../components/Footer.astro';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kyle Slugg-Urbino</title>
+    <link rel="canonical" href={canonical} />
+    <slot name="head" />
   </head>
   <body>
     <!-- width:auto wrapper matches the sizing behavior of the old React

@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import atproto from '../../../atproto.config.json';
 import '../../styles/essay.scss';
 
 export async function getStaticPaths() {
@@ -26,9 +27,64 @@ const longDate = entry.data.date.toLocaleDateString('en-US', {
   day: 'numeric',
   timeZone: 'UTC'
 });
+
+// standard.site document verification (sync uses the slug as rkey)
+const documentUri = atproto.publicationUri
+  ? `at://${atproto.did}/site.standard.document/${entry.id}`
+  : undefined;
+
+// Build-time comments: replies to the essay's Bluesky announcement post.
+interface Comment {
+  author: string;
+  handle: string;
+  avatar?: string;
+  text: string;
+  date: string;
+  url: string;
+}
+
+const postUrlFromAtUri = (uri: string) => {
+  const m = uri.match(/^at:\/\/([^/]+)\/app\.bsky\.feed\.post\/(.+)$/);
+  return m ? `https://bsky.app/profile/${m[1]}/post/${m[2]}` : undefined;
+};
+
+let comments: Comment[] = [];
+let announcementUrl: string | undefined;
+if (entry.data.bskyPostUri) {
+  announcementUrl = postUrlFromAtUri(entry.data.bskyPostUri);
+  try {
+    const res = await fetch(
+      'https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?depth=10&uri=' +
+        encodeURIComponent(entry.data.bskyPostUri)
+    );
+    if (res.ok) {
+      const { thread } = await res.json();
+      const walk = (replies: any[] | undefined) => {
+        for (const r of replies ?? []) {
+          if (!r?.post) continue;
+          comments.push({
+            author: r.post.author.displayName || r.post.author.handle,
+            handle: r.post.author.handle,
+            avatar: r.post.author.avatar,
+            text: r.post.record?.text ?? '',
+            date: (r.post.record?.createdAt ?? '').slice(0, 10),
+            url: postUrlFromAtUri(r.post.uri) ?? '#'
+          });
+          walk(r.replies);
+        }
+      };
+      walk(thread?.replies);
+    }
+  } catch (err) {
+    console.warn(`[comments] fetch failed for ${entry.id}:`, err);
+  }
+}
 ---
 
 <Base>
+  {documentUri && (
+    <link slot="head" rel="site.standard.document" href={documentUri} />
+  )}
   <article class="mcard essay">
     <div class="card">
       <header class="essayHeader">
@@ -38,6 +94,31 @@ const longDate = entry.data.date.toLocaleDateString('en-US', {
       <div class="essayBody">
         <Content />
       </div>
+      {
+        announcementUrl && (
+          <section class="essayComments">
+            <h2>Comments</h2>
+            <p class="essayCommentsHint">
+              Reply <a href={announcementUrl}>on Bluesky</a> to join the
+              conversation — replies appear here.
+            </p>
+            {comments.map((c) => (
+              <div class="comment">
+                {c.avatar && <img class="commentAvatar" src={c.avatar} alt="" />}
+                <div>
+                  <p class="commentMeta">
+                    <a href={`https://bsky.app/profile/${c.handle}`}>
+                      {c.author}
+                    </a>{' '}
+                    &middot; <a href={c.url}>{c.date}</a>
+                  </p>
+                  <p class="commentText">{c.text}</p>
+                </div>
+              </div>
+            ))}
+          </section>
+        )
+      }
       <p class="essayReturn"><a href="/work">&larr; Back to work</a></p>
     </div>
   </article>
