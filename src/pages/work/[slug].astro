@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import '../../styles/essay.scss';
+
+export async function getStaticPaths() {
+  const entries = await getCollection(
+    'work',
+    (e) =>
+      (import.meta.env.DEV || !e.data.draft) &&
+      !e.data.externalUrl &&
+      Boolean(e.body?.trim())
+  );
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const longDate = entry.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'UTC'
+});
+---
+
+<Base>
+  <article class="mcard essay">
+    <div class="card">
+      <header class="essayHeader">
+        <h1>{entry.data.title}</h1>
+        <p class="essayMeta">{longDate} &middot; Kyle Slugg-Urbino</p>
+      </header>
+      <div class="essayBody">
+        <Content />
+      </div>
+      <p class="essayReturn"><a href="/work">&larr; Back to work</a></p>
+    </div>
+  </article>
+</Base>

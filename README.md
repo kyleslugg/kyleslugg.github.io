@@ -15,12 +15,17 @@ contact page, inlined at build time.
 
 ## Structure
 
-- `src/pages/` — one `.astro` file per page (`/`, `/about`, `/work`, `/contact`)
+- `src/pages/` — one `.astro` file per page (`/`, `/about`, `/work`, `/contact`),
+  plus `work/[slug].astro` for on-site essay pages
 - `src/layouts/Base.astro` — shared shell (head, header, footer)
-- `src/components/` — header, footer, image grid, work-post card
-- `src/data/blurbs.json` — the project list rendered on the Work page.
-  **To add a project, add an entry here** and drop its image in
-  `public/post_images/`.
+- `src/components/` — header, footer, image grid
+- `src/content/work/` — one markdown file per Work entry (projects and
+  writing share the stream). **To add an entry, add a file here.**
+  Frontmatter: `title`, `date`, `blurb`, optional `image` (drop the file
+  in `public/post_images/`), optional `externalUrl`. An entry *with* an
+  `externalUrl` is a link-out; an entry *with a markdown body* becomes an
+  essay at `/work/<filename>`; `draft: true` hides it from production
+  builds (still visible in `npm run dev`). See `draft-template.md`.
 - `src/styles/` — global SCSS. `theme.scss` reproduces the look of the MUI
   components the previous React version of this site used; values were
   measured from the rendered MUI output.

@@ -1,0 +1,76 @@
+.workList {
+  display: flex;
+  flex-direction: column;
+}
+
+.workRow {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  grid-template-areas: 'thumb text date';
+  gap: 6px 16px;
+  padding: 14px 0;
+
+  &.noThumb {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: 'text date';
+  }
+}
+
+.workThumb {
+  grid-area: thumb;
+  width: 64px;
+  height: 64px;
+  min-width: 0;
+  min-height: 0;
+  object-fit: cover;
+  display: block;
+}
+
+.workText {
+  grid-area: text;
+
+  h4 {
+    margin: 0;
+    font-size: 1.0625rem;
+    line-height: 1.35;
+  }
+
+  p {
+    margin: 4px 0 0;
+    color: rgba(0, 0, 0, 0.72);
+  }
+}
+
+.workExt {
+  font-size: 0.85em;
+}
+
+.workDate {
+  grid-area: date;
+  font-family: 'Courier New', courier, monospace;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+@media (max-width: 600px) {
+  .workRow {
+    grid-template-columns: 64px 1fr;
+    grid-template-areas:
+      'thumb text'
+      'thumb date';
+    align-content: start;
+
+    &.noThumb {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'text'
+        'date';
+    }
+  }
+
+  .workDate {
+    padding-top: 0;
+  }
+}

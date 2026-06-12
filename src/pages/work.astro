@@ -1,21 +1,50 @@
 ---
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import PostLede from '../components/PostLede.astro';
-import blurbs from '../data/blurbs.json';
-import '../styles/Posts.scss';
+import '../styles/workList.scss';
 
-const photoDirectory = '/post_images/';
+const entries = (
+  await getCollection('work', (e) => import.meta.env.DEV || !e.data.draft)
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const isoDate = (d: Date) => d.toISOString().slice(0, 10);
+
+// Link-outs go to externalUrl; entries with a body get an on-site page.
+const hrefFor = (e: (typeof entries)[number]) =>
+  e.data.externalUrl ?? (e.body?.trim() ? `/work/${e.id}` : undefined);
 ---
 
 <Base>
   <div class="mcard arial">
     <div class="card">
       <h3>The Latest</h3>
-      <div>
+      <div class="workList">
         {
-          blurbs.map((blurb) => (
-            <PostLede data={blurb} photoDirectory={photoDirectory} />
-          ))
+          entries.map((entry) => {
+            const href = hrefFor(entry);
+            const external = Boolean(entry.data.externalUrl);
+            return (
+              <article class={`workRow${entry.data.image ? '' : ' noThumb'}`}>
+                {entry.data.image && (
+                  <img class="workThumb" src={entry.data.image} alt="" />
+                )}
+                <div class="workText">
+                  <h4>
+                    {href ? (
+                      <a href={href}>
+                        {entry.data.title}
+                        {external && <span class="workExt"> &#8599;</span>}
+                      </a>
+                    ) : (
+                      entry.data.title
+                    )}
+                  </h4>
+                  <p>{entry.data.blurb}</p>
+                </div>
+                <span class="workDate">{isoDate(entry.data.date)}</span>
+              </article>
+            );
+          })
         }
       </div>
     </div>
