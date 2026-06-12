@@ -1,34 +1,33 @@
 // One-off importer: replays Last.fm scrobble history into Rocksky via
-// Rocksky's Last.fm-compatible Audioscrobbler 2.0 endpoint
-// (https://docs.rocksky.app/migrations/from-lastfm), batched 50 plays
-// per request with original timestamps. Dependency-free.
+// app.rocksky.scrobble.createScrobble (bearer-token auth, original
+// timestamps). Dependency-free.
 //
 //   node scripts/lastfm-import.mjs --count   size the job (read-only;
 //                                            needs only Last.fm creds)
+//   node scripts/lastfm-import.mjs --test    import the single oldest
+//                                            play, to verify auth and
+//                                            timestamp handling
 //   node scripts/lastfm-import.mjs --run     import, oldest first
 //
 // Credentials (.env or environment):
-//   LASTFM_USER             Last.fm username
-//   LASTFM_API_KEY          Last.fm API key (the mirror's key works)
-//   ROCKSKY_API_KEY         from https://rocksky.app/apikeys
-//   ROCKSKY_SHARED_SECRET   from https://rocksky.app/apikeys
-//   ROCKSKY_SESSION_KEY     session key for the Audioscrobbler API
+//   LASTFM_USER            Last.fm username
+//   LASTFM_API_KEY         Last.fm API key (the mirror's key works)
+//   ROCKSKY_BEARER_TOKEN   bearer token for api.rocksky.app
 //
 // Progress persists in .lastfm-import-state.json (gitignored): the run
-// freezes an upper timestamp bound at start (so the live Last.fm->
+// freezes an upper timestamp bound at start (so the live Last.fm ->
 // Rocksky mirror keeps working without shifting pagination) and walks
-// from the oldest play forward, checkpointing after every batch. Safe
-// to interrupt and re-run; Rocksky dedups plays within a +/-120s window
-// in any case.
+// from the oldest play forward, checkpointing as it goes. Safe to
+// interrupt and re-run — including after a 401 when the bearer token
+// expires: regenerate the token and re-run to resume.
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
-import { createHash } from 'node:crypto';
 import path from 'node:path';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const STATE_PATH = path.join(ROOT, '.lastfm-import-state.json');
-const BATCH = 50;
-const BATCH_DELAY_MS = 2500;
+const PAGE_SIZE = 200; // Last.fm API max
+const SCROBBLE_DELAY_MS = 800;
 
 function env(name, required = true) {
   if (process.env[name]) return process.env[name];
@@ -54,7 +53,7 @@ async function lastfmPage({ user, apiKey, from, to, page }) {
     user,
     api_key: apiKey,
     format: 'json',
-    limit: String(BATCH * 4), // 200, the API max
+    limit: String(PAGE_SIZE),
     page: String(page)
   });
   if (from) params.set('from', String(from));
@@ -69,9 +68,9 @@ async function lastfmPage({ user, apiKey, from, to, page }) {
     .filter((t) => t.date?.uts) // skip the "now playing" pseudo-entry
     .map((t) => ({
       artist: t.artist?.['#text'] ?? t.artist?.name ?? '',
-      track: t.name,
+      title: t.name,
       album: t.album?.['#text'] || undefined,
-      mbid: t.mbid || undefined,
+      mbId: t.mbid || undefined,
       uts: Number(t.date.uts)
     }));
   return {
@@ -81,75 +80,91 @@ async function lastfmPage({ user, apiKey, from, to, page }) {
   };
 }
 
-function sign(params, secret) {
-  const base = Object.keys(params)
-    .filter((k) => k !== 'format')
-    .sort()
-    .map((k) => k + params[k])
-    .join('');
-  return createHash('md5').update(base + secret, 'utf8').digest('hex');
-}
-
-async function scrobbleBatch(batch, creds, attempt = 0) {
-  const params = {
-    method: 'track.scrobble',
-    api_key: creds.apiKey,
-    sk: creds.sessionKey,
-    format: 'json'
-  };
-  batch.forEach((t, i) => {
-    params[`artist[${i}]`] = t.artist;
-    params[`track[${i}]`] = t.track;
-    params[`timestamp[${i}]`] = String(t.uts);
-    if (t.album) params[`album[${i}]`] = t.album;
-    if (t.mbid) params[`mbid[${i}]`] = t.mbid;
-  });
-  params.api_sig = sign(params, creds.sharedSecret);
-  const res = await fetch('https://audioscrobbler.rocksky.app/2.0', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(params)
-  });
+async function createScrobble(track, token, attempt = 0) {
+  const res = await fetch(
+    'https://api.rocksky.app/xrpc/app.rocksky.scrobble.createScrobble',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        title: track.title,
+        artist: track.artist,
+        ...(track.album ? { album: track.album } : {}),
+        ...(track.mbId ? { mbId: track.mbId } : {}),
+        timestamp: track.uts
+      })
+    }
+  );
+  if (res.status === 401) {
+    throw new Error(
+      'Rocksky returned 401 — the bearer token expired. Regenerate it, ' +
+        'update .env, and re-run; the import resumes from the checkpoint.'
+    );
+  }
   if (res.status === 429 || res.status >= 500) {
-    if (attempt >= 5) throw new Error(`Rocksky ${res.status} after 5 retries`);
+    if (attempt >= 6) throw new Error(`Rocksky ${res.status} after 6 retries`);
     const wait = 5000 * 2 ** attempt;
-    console.log(`  rate-limited/unavailable (${res.status}); waiting ${wait / 1000}s`);
+    console.log(`  ${res.status} from Rocksky; backing off ${wait / 1000}s`);
     await sleep(wait);
-    return scrobbleBatch(batch, creds, attempt + 1);
+    return createScrobble(track, token, attempt + 1);
   }
   if (!res.ok) {
-    throw new Error(`Rocksky scrobble failed (${res.status}): ${await res.text()}`);
+    // Unmatchable tracks are skipped by Rocksky's normalizer; treat a
+    // 4xx for a single play as skippable rather than fatal.
+    console.log(
+      `  skipped "${track.artist} — ${track.title}" (${res.status}: ${(await res.text()).slice(0, 120)})`
+    );
+    return { skipped: true };
   }
   return res.json().catch(() => ({}));
 }
 
-const lastfm = {
-  user: env('LASTFM_USER'),
-  apiKey: env('LASTFM_API_KEY')
-};
+const lastfm = { user: env('LASTFM_USER'), apiKey: env('LASTFM_API_KEY') };
+const mode = process.argv.includes('--run')
+  ? 'run'
+  : process.argv.includes('--test')
+    ? 'test'
+    : process.argv.includes('--count')
+      ? 'count'
+      : null;
 
-if (process.argv.includes('--count')) {
+if (!mode) {
+  console.log('Usage: node scripts/lastfm-import.mjs --count | --test | --run');
+  process.exit(1);
+}
+
+if (mode === 'count') {
   const { total } = await lastfmPage({ ...lastfm, page: 1 });
-  const batches = Math.ceil(total / BATCH);
-  const hours = (batches * BATCH_DELAY_MS) / 3600_000;
+  const hours = (total * SCROBBLE_DELAY_MS) / 3600_000;
   console.log(`Last.fm history for ${lastfm.user}: ${total} scrobbles`);
   console.log(
-    `Import plan: ${batches} batches of ${BATCH}, ~${hours.toFixed(1)}h at ` +
-      `${BATCH_DELAY_MS / 1000}s/batch (resumable; safe to interrupt)`
+    `Import plan: ~${hours.toFixed(1)}h at ${SCROBBLE_DELAY_MS}ms per play ` +
+      '(resumable; safe to interrupt)'
   );
   process.exit(0);
 }
 
-if (!process.argv.includes('--run')) {
-  console.log('Usage: node scripts/lastfm-import.mjs --count | --run');
-  process.exit(1);
-}
+const token = env('ROCKSKY_BEARER_TOKEN');
 
-const rocksky = {
-  apiKey: env('ROCKSKY_API_KEY'),
-  sharedSecret: env('ROCKSKY_SHARED_SECRET'),
-  sessionKey: env('ROCKSKY_SESSION_KEY')
-};
+if (mode === 'test') {
+  const probe = await lastfmPage({ ...lastfm, page: 1 });
+  const oldestPage = await lastfmPage({ ...lastfm, page: probe.totalPages });
+  const oldest = oldestPage.tracks[oldestPage.tracks.length - 1];
+  console.log(
+    `Test-importing oldest play: "${oldest.artist} — ${oldest.title}" ` +
+      `at ${new Date(oldest.uts * 1000).toISOString()}`
+  );
+  const result = await createScrobble(oldest, token);
+  console.log('Response:', JSON.stringify(result).slice(0, 300));
+  console.log(
+    'Check your Rocksky profile: the play should appear with the date above. ' +
+      'If the date is wrong, stop and investigate before --run.'
+  );
+  process.exit(0);
+}
 
 const state = existsSync(STATE_PATH)
   ? JSON.parse(readFileSync(STATE_PATH, 'utf8'))
@@ -169,6 +184,7 @@ for (;;) {
     page: 1
   });
   if (probe.total === 0) break;
+  const grandTotal = probe.total + state.imported;
   const page =
     probe.totalPages === 1
       ? probe
@@ -179,19 +195,16 @@ for (;;) {
           page: probe.totalPages
         });
   const oldestFirst = [...page.tracks].reverse();
-  for (let i = 0; i < oldestFirst.length; i += BATCH) {
-    const batch = oldestFirst.slice(i, i + BATCH);
-    await scrobbleBatch(batch, rocksky);
-    state.cursor = batch[batch.length - 1].uts + 1;
-    state.imported += batch.length;
+  for (const track of oldestFirst) {
+    await createScrobble(track, token);
+    state.cursor = track.uts + 1;
+    state.imported += 1;
     writeFileSync(STATE_PATH, JSON.stringify(state));
-    const when = new Date(batch[batch.length - 1].uts * 1000)
-      .toISOString()
-      .slice(0, 10);
-    console.log(
-      `[import] ${state.imported}/${probe.total + state.imported} up to ${when}`
-    );
-    await sleep(BATCH_DELAY_MS);
+    if (state.imported % 25 === 0) {
+      const when = new Date(track.uts * 1000).toISOString().slice(0, 10);
+      console.log(`[import] ${state.imported}/${grandTotal} (up to ${when})`);
+    }
+    await sleep(SCROBBLE_DELAY_MS);
   }
 }
 
