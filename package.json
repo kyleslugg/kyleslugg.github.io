@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build && node scripts/atproto-sync.mjs",
     "preview": "astro preview",
-    "atproto:init": "node scripts/atproto-sync.mjs --init"
+    "atproto:init": "node scripts/atproto-sync.mjs --init",
+    "playlist:sync": "node scripts/playlist-sync.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0"

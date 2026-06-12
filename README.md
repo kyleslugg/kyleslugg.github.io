@@ -54,6 +54,17 @@ the variable is set as a production build secret.
   `/.well-known/site.standard.publication` (publication), and a
   `<link rel="site.standard.document">` tag on each essay.
 
+## Playlist
+
+`/playlist` renders `src/data/playlist.json`. To edit the playlist:
+curate it in Spotify as usual, then run `npm run playlist:sync` — the
+script mirrors the track list/order from the public Spotify playlist
+(no credentials), resolves YouTube links for new tracks (best-effort:
+**review the flagged matches in the diff**), and preserves hand-edited
+`youtubeId` values (including `null` for tracks not on YouTube). Review
+`git diff`, fix any bad match by editing the `youtubeId` directly, and
+push.
+
 ## Deployment
 
 Deployed via Cloudflare Pages connected to this repository
