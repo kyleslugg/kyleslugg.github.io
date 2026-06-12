@@ -110,7 +110,7 @@ async function handshake(creds) {
   return { session: body[1], submitUrl: body[3] };
 }
 
-async function submitBatch(batch, hs, creds, attempt = 0) {
+async function submitOnce(batch, hs) {
   const params = new URLSearchParams({ s: hs.session });
   batch.forEach((t, i) => {
     params.set(`a[${i}]`, t.artist);
@@ -128,17 +128,37 @@ async function submitBatch(batch, hs, creds, attempt = 0) {
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: params
   });
-  const body = (await res.text()).trim();
-  if (body.startsWith('OK')) return hs;
-  if (attempt >= 5) throw new Error(`Submission failed after retries: ${body.slice(0, 200)}`);
-  if (body.startsWith('BADSESSION')) {
-    console.log('  session expired; re-handshaking');
-    return submitBatch(batch, await handshake(creds), creds, attempt + 1);
+  return (await res.text()).trim();
+}
+
+// Submits a batch, retrying transient failures; if a batch keeps
+// failing, bisects it to isolate the poison track, which is skipped
+// with a log line instead of sinking its whole batch.
+async function submitBatch(batch, hs, creds) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const body = await submitOnce(batch, hs);
+    if (body.startsWith('OK')) return hs;
+    if (body.startsWith('BADSESSION')) {
+      console.log('  session expired; re-handshaking');
+      hs = await handshake(creds);
+      continue;
+    }
+    const wait = 4000 * 2 ** attempt;
+    console.log(`  submission not OK (${body.slice(0, 160)}); retrying in ${wait / 1000}s`);
+    await sleep(wait);
   }
-  const wait = 5000 * 2 ** attempt;
-  console.log(`  submission not OK (${body.slice(0, 80)}); retrying in ${wait / 1000}s`);
-  await sleep(wait);
-  return submitBatch(batch, hs, creds, attempt + 1);
+  if (batch.length === 1) {
+    const t = batch[0];
+    console.log(
+      `  POISON TRACK skipped: "${t.artist} — ${t.title}" (${new Date(t.uts * 1000).toISOString()})`
+    );
+    return hs;
+  }
+  console.log(`  batch of ${batch.length} keeps failing; bisecting`);
+  const mid = Math.ceil(batch.length / 2);
+  hs = await submitBatch(batch.slice(0, mid), hs, creds);
+  await sleep(1000);
+  return submitBatch(batch.slice(mid), hs, creds);
 }
 
 const lastfm = { user: env('LASTFM_USER'), apiKey: env('LASTFM_API_KEY') };
