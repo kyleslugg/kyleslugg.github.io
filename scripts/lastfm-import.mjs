@@ -57,6 +57,12 @@ function env(name, required = true) {
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const md5 = (s) => createHash('md5').update(s, 'utf8').digest('hex');
 
+// Tracks Rocksky's backend persistently 500s on. Once a play is
+// isolated as poison, every other play of the same track is skipped
+// up front instead of re-bisected (persisted in the state file).
+const poisonSet = new Set();
+const poisonKey = (t) => `${t.artist}||${t.title}`.toLowerCase();
+
 async function lastfmPage({ user, apiKey, from, to, page }) {
   const params = new URLSearchParams({
     method: 'user.getrecenttracks',
@@ -149,8 +155,9 @@ async function submitBatch(batch, hs, creds) {
   }
   if (batch.length === 1) {
     const t = batch[0];
+    poisonSet.add(poisonKey(t));
     console.log(
-      `  POISON TRACK skipped: "${t.artist} — ${t.title}" (${new Date(t.uts * 1000).toISOString()})`
+      `  POISON TRACK skipped: "${t.artist} — ${t.title}" (${new Date(t.uts * 1000).toISOString()}) — all future plays of it will be skipped`
     );
     return hs;
   }
@@ -227,7 +234,13 @@ const state = existsSync(STATE_PATH)
       imported: 0
     };
 state.cursor = Math.max(state.cursor, TIMESTAMP_FLOOR);
-writeFileSync(STATE_PATH, JSON.stringify(state));
+for (const k of state.poisons ?? []) poisonSet.add(k);
+const saveState = () =>
+  writeFileSync(
+    STATE_PATH,
+    JSON.stringify({ ...state, poisons: [...poisonSet] })
+  );
+saveState();
 console.log(
   `[import] starting from cursor=${state.cursor} (already imported: ${state.imported})`
 );
@@ -258,10 +271,16 @@ for (;;) {
   const oldestFirst = [...page.tracks].reverse();
   for (let i = 0; i < oldestFirst.length; i += BATCH) {
     const batch = oldestFirst.slice(i, i + BATCH);
-    hs = await submitBatch(batch, hs, creds);
+    const sendable = batch.filter((t) => !poisonSet.has(poisonKey(t)));
+    if (sendable.length < batch.length) {
+      state.skippedPoison = (state.skippedPoison ?? 0) + (batch.length - sendable.length);
+    }
+    if (sendable.length > 0) {
+      hs = await submitBatch(sendable, hs, creds);
+    }
     state.cursor = batch[batch.length - 1].uts + 1;
-    state.imported += batch.length;
-    writeFileSync(STATE_PATH, JSON.stringify(state));
+    state.imported += sendable.length;
+    saveState();
     const when = new Date(batch[batch.length - 1].uts * 1000)
       .toISOString()
       .slice(0, 10);
@@ -270,4 +289,9 @@ for (;;) {
   }
 }
 
-console.log(`[import] done — ${state.imported} scrobbles replayed into Rocksky.`);
+console.log(
+  `[import] done — ${state.imported} scrobbles replayed into Rocksky` +
+    (state.skippedPoison
+      ? `; ${state.skippedPoison} plays of ${poisonSet.size} poison track(s) skipped`
+      : '.')
+);
