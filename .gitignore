@@ -28,3 +28,6 @@ dist-ssr
 
 # Local secrets (ATPROTO_APP_PASSWORD)
 .env
+
+# Last.fm import progress (one-off)
+.lastfm-import-state.json

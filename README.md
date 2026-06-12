@@ -120,6 +120,15 @@ It is set as a production build secret in Cloudflare Pages; without it
 the sync skips silently, so local builds need no credentials. Revoke or
 rotate it anytime in the account's App Passwords settings.
 
+### One-off: Last.fm history import (Rocksky)
+
+`scripts/lastfm-import.mjs` replays Last.fm scrobble history into
+[Rocksky](https://rocksky.app) through its Audioscrobbler-compatible
+API. `--count` sizes the job (read-only); `--run` imports oldest-first,
+checkpointing to a gitignored state file, so it's safe to interrupt and
+resume. Credentials in `.env`: `LASTFM_USER`, `LASTFM_API_KEY`,
+`ROCKSKY_API_KEY`, `ROCKSKY_SHARED_SECRET`, `ROCKSKY_SESSION_KEY`.
+
 ## Deployment
 
 Cloudflare Pages, connected to this repository: build command
